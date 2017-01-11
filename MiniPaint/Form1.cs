@@ -20,7 +20,6 @@ namespace MiniPaint
         private Point start;
         private Bitmap drawingArea, lastDrawing, gridArea;
         private Grid grid;
-        private List<IDraw> temp;
         private int gridSize;
         private IDraw lastObjDraw;
 
@@ -34,8 +33,6 @@ namespace MiniPaint
             lastObjDraw = null;
             gridSize = 50;
             grid = new Grid(gridSize, pnlDrawingArea.Width,pnlDrawingArea.Height);
-            temp = new List<IDraw>();
-            temp.Add(grid);
         }
 
         private void pnlDrawingArea_Paint(object sender, PaintEventArgs e)
@@ -55,9 +52,6 @@ namespace MiniPaint
             if (dragging)
             {
                 IDraw objectDraw = GetDrawObject(start, e.Location);
-                lastObjDraw = null;
-                lastObjDraw = objectDraw;
-
                 drawingArea.Dispose();
 
                 if (cekTransform.Checked)
@@ -73,7 +67,6 @@ namespace MiniPaint
                     drawingArea = (Bitmap)lastDrawing.Clone();
                 }
                
-                
                 using (Graphics g = Graphics.FromImage(drawingArea))
                 {
                     objectDraw.Draw(g);
@@ -89,7 +82,6 @@ namespace MiniPaint
             {
                 dragging = false;
                 lastDrawing.Dispose();
-                temp.Add(lastObjDraw);
             }
         }
 
@@ -149,8 +141,6 @@ namespace MiniPaint
 
         private void btnClearArea_Click(object sender, EventArgs e)
         {
-            temp.Clear();
-            temp.Add(grid);
             drawingArea.Dispose();
             drawingArea = new Bitmap(pnlDrawingArea.Width, pnlDrawingArea.Height);
             pnlDrawingArea.Invalidate();
@@ -163,7 +153,6 @@ namespace MiniPaint
 
             //..change grid size
             grid.SetGrid(gridSize, panel.Width, panel.Height);
-            temp.Insert(0, grid);
 
             gridArea.Dispose();
             gridArea = new Bitmap(panel.Width, panel.Height);
@@ -177,11 +166,7 @@ namespace MiniPaint
             {
                 using (Graphics g = Graphics.FromImage(resizeArea))
                 {
-                    //g.DrawImage(drawingArea, 0, 0);
-                    foreach (IDraw objDraw in temp)
-                    {
-                        objDraw.Draw(g);
-                    }
+                    g.DrawImage(drawingArea, 0, 0);
                 }
                 drawingArea.Dispose();
             }
