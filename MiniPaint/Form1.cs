@@ -202,14 +202,7 @@ namespace MiniPaint
 
         private void btnShowCartesian_Click(object sender, EventArgs e)
         {
-            if (cekTransform.Checked)
-            {
-                //..test transformasi translasi...
-                if (lastObjDraw != null)
-                {
-
-                }
-            }
+        
         }
 
         private Point GetCenter(Point A, Point B)

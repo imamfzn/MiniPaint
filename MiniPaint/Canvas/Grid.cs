@@ -12,11 +12,13 @@ namespace MiniPaint.Canvas
         private int size;
         private int midX, midY, hPanel, wPanel;
         private Point origin;
+        public Cartesian cart;
         
         public Grid(int size, int wPanel, int hPanel)
         {
             this.SetGrid(size, wPanel, hPanel);
             this.origin = new Point(wPanel, hPanel);
+            this.cart = new Cartesian(wPanel, hPanel, size);
         }
 
         public void SetGrid(int size, int wPanel, int hPanel)
@@ -48,6 +50,11 @@ namespace MiniPaint.Canvas
             //..make cartesian coordinate
             g.DrawLine(new Pen(Color.Black), this.midX, 0, this.midX, hPanel);
             g.DrawLine(new Pen(Color.Black), 0,this.midY, wPanel, this.midY);
+        }
+
+        public override string ToString()
+        {
+            return origin.ToString();
         }
     }
 }

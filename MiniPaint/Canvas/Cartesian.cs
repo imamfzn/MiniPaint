@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MiniPaint.Canvas
 {
-    class Cartesian : IDraw
+    class Cartesian
     {
         private Point origin;
         private int size;

@@ -75,5 +75,6 @@ namespace MiniPaint.Shape
         {
             g.FillRectangle(Brushes.Black, new Rectangle(P, new Size(1, 1)));
         }
+
     }
 }
