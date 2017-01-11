@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MiniPaint.Shape;
+using MiniPaint.Canvas;
 using MiniPaint.LineCreator;
 
 
@@ -17,7 +18,11 @@ namespace MiniPaint
     {
         private bool dragging;
         private Point start;
-        private Bitmap drawingArea, lastDrawing;
+        private Bitmap drawingArea, lastDrawing, gridArea;
+        private Grid grid;
+        private List<IDraw> temp;
+        private int gridSize;
+        private IDraw lastObjDraw;
 
         public Form1()
         {
@@ -25,7 +30,12 @@ namespace MiniPaint
             dragging = false;
             start = new Point(0, 0);
             drawingArea = new Bitmap(pnlDrawingArea.Width,pnlDrawingArea.Height);
-            
+            gridArea = new Bitmap(pnlDrawingArea.Width, pnlDrawingArea.Height);
+            lastObjDraw = null;
+            gridSize = 50;
+            grid = new Grid(gridSize, pnlDrawingArea.Width,pnlDrawingArea.Height);
+            temp = new List<IDraw>();
+            temp.Add(grid);
         }
 
         private void pnlDrawingArea_Paint(object sender, PaintEventArgs e)
@@ -44,11 +54,25 @@ namespace MiniPaint
         {
             if (dragging)
             {
-                double deg = Math.Atan((double)(e.Location.Y - start.Y) / (e.Location.X - start.X));
-                int r = GetDistance(e.Location, start);
                 IDraw objectDraw = GetDrawObject(start, e.Location);
+                lastObjDraw = null;
+                lastObjDraw = objectDraw;
+
                 drawingArea.Dispose();
-                drawingArea = (Bitmap) lastDrawing.Clone();
+
+                if (cekTransform.Checked)
+                {
+                    drawingArea = (Bitmap) gridArea.Clone();
+                    using (Graphics g = Graphics.FromImage(drawingArea))
+                    {
+                        grid.Draw(g);
+                    }
+                }
+                else
+                {
+                    drawingArea = (Bitmap)lastDrawing.Clone();
+                }
+               
                 
                 using (Graphics g = Graphics.FromImage(drawingArea))
                 {
@@ -65,6 +89,7 @@ namespace MiniPaint
             {
                 dragging = false;
                 lastDrawing.Dispose();
+                temp.Add(lastObjDraw);
             }
         }
 
@@ -124,6 +149,8 @@ namespace MiniPaint
 
         private void btnClearArea_Click(object sender, EventArgs e)
         {
+            temp.Clear();
+            temp.Add(grid);
             drawingArea.Dispose();
             drawingArea = new Bitmap(pnlDrawingArea.Width, pnlDrawingArea.Height);
             pnlDrawingArea.Invalidate();
@@ -134,16 +161,55 @@ namespace MiniPaint
             Control panel = (Control)sender;
             Bitmap resizeArea = new Bitmap(panel.Width, panel.Height);
 
+            //..change grid size
+            grid.SetGrid(gridSize, panel.Width, panel.Height);
+            temp.Insert(0, grid);
+
+            gridArea.Dispose();
+            gridArea = new Bitmap(panel.Width, panel.Height);
+            using (Graphics g = Graphics.FromImage(gridArea))
+            {
+                grid.Draw(g);
+            }
+
+
             if (drawingArea!= null)
             {
                 using (Graphics g = Graphics.FromImage(resizeArea))
                 {
-                    g.DrawImage(drawingArea, 0, 0);
+                    //g.DrawImage(drawingArea, 0, 0);
+                    foreach (IDraw objDraw in temp)
+                    {
+                        objDraw.Draw(g);
+                    }
                 }
                 drawingArea.Dispose();
             }
             drawingArea = resizeArea;
+            pnlDrawingArea.Invalidate();
+        }
 
+        private void cekTransform_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cekTransform.Checked)
+            {
+                using (Graphics g = Graphics.FromImage(gridArea))
+                {
+                    grid.Draw(g);
+                }
+            }
+        }
+
+        private void btnShowCartesian_Click(object sender, EventArgs e)
+        {
+            if (cekTransform.Checked)
+            {
+                //..test transformasi translasi...
+                if (lastObjDraw != null)
+                {
+
+                }
+            }
         }
 
         private Point GetCenter(Point A, Point B)

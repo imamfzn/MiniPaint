@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pnlDrawingArea = new System.Windows.Forms.Panel();
             this.grbLine = new System.Windows.Forms.GroupBox();
             this.rbLineBresenham = new System.Windows.Forms.RadioButton();
             this.rbLineDDA = new System.Windows.Forms.RadioButton();
@@ -42,28 +41,15 @@
             this.btnClearArea = new System.Windows.Forms.Button();
             this.numericGon = new System.Windows.Forms.NumericUpDown();
             this.grbNGon = new System.Windows.Forms.GroupBox();
+            this.btnShowCartesian = new System.Windows.Forms.Button();
+            this.cekTransform = new System.Windows.Forms.CheckBox();
+            this.pnlDrawingArea = new System.Windows.Forms.PictureBox();
             this.grbLine.SuspendLayout();
             this.grbShape.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericGon)).BeginInit();
             this.grbNGon.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pnlDrawingArea)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pnlDrawingArea
-            // 
-            this.pnlDrawingArea.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlDrawingArea.AutoSize = true;
-            this.pnlDrawingArea.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlDrawingArea.Location = new System.Drawing.Point(35, 68);
-            this.pnlDrawingArea.Name = "pnlDrawingArea";
-            this.pnlDrawingArea.Size = new System.Drawing.Size(668, 305);
-            this.pnlDrawingArea.TabIndex = 0;
-            this.pnlDrawingArea.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlDrawingArea_Paint);
-            this.pnlDrawingArea.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlDrawingArea_MouseDown);
-            this.pnlDrawingArea.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlDrawingArea_MouseMove);
-            this.pnlDrawingArea.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnlDrawingArea_MouseUp);
-            this.pnlDrawingArea.Resize += new System.EventHandler(this.pnlDrawingArea_Resize);
             // 
             // grbLine
             // 
@@ -219,16 +205,59 @@
             this.grbNGon.TabStop = false;
             this.grbNGon.Text = "Degree of Polygon / Star";
             // 
+            // btnShowCartesian
+            // 
+            this.btnShowCartesian.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnShowCartesian.Location = new System.Drawing.Point(510, 379);
+            this.btnShowCartesian.Name = "btnShowCartesian";
+            this.btnShowCartesian.Size = new System.Drawing.Size(102, 27);
+            this.btnShowCartesian.TabIndex = 4;
+            this.btnShowCartesian.Text = "Show Cartesian";
+            this.btnShowCartesian.UseVisualStyleBackColor = true;
+            this.btnShowCartesian.Click += new System.EventHandler(this.btnShowCartesian_Click);
+            // 
+            // cekTransform
+            // 
+            this.cekTransform.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.cekTransform.AutoSize = true;
+            this.cekTransform.Location = new System.Drawing.Point(392, 385);
+            this.cekTransform.Name = "cekTransform";
+            this.cekTransform.Size = new System.Drawing.Size(112, 17);
+            this.cekTransform.TabIndex = 5;
+            this.cekTransform.Text = "Transform Method";
+            this.cekTransform.UseVisualStyleBackColor = true;
+            this.cekTransform.CheckedChanged += new System.EventHandler(this.cekTransform_CheckedChanged);
+            // 
+            // pnlDrawingArea
+            // 
+            this.pnlDrawingArea.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlDrawingArea.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlDrawingArea.Location = new System.Drawing.Point(35, 68);
+            this.pnlDrawingArea.Name = "pnlDrawingArea";
+            this.pnlDrawingArea.Size = new System.Drawing.Size(668, 305);
+            this.pnlDrawingArea.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pnlDrawingArea.TabIndex = 6;
+            this.pnlDrawingArea.TabStop = false;
+            this.pnlDrawingArea.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlDrawingArea_Paint);
+            this.pnlDrawingArea.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlDrawingArea_MouseDown);
+            this.pnlDrawingArea.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlDrawingArea_MouseMove);
+            this.pnlDrawingArea.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnlDrawingArea_MouseUp);
+            this.pnlDrawingArea.Resize += new System.EventHandler(this.pnlDrawingArea_Resize);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(726, 422);
+            this.Controls.Add(this.pnlDrawingArea);
+            this.Controls.Add(this.cekTransform);
+            this.Controls.Add(this.btnShowCartesian);
             this.Controls.Add(this.btnClearArea);
             this.Controls.Add(this.grbNGon);
             this.Controls.Add(this.grbShape);
             this.Controls.Add(this.grbLine);
-            this.Controls.Add(this.pnlDrawingArea);
             this.Name = "Form1";
             this.Text = "Form1";
             this.grbLine.ResumeLayout(false);
@@ -237,14 +266,13 @@
             this.grbShape.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericGon)).EndInit();
             this.grbNGon.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pnlDrawingArea)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel pnlDrawingArea;
         private System.Windows.Forms.GroupBox grbLine;
         private System.Windows.Forms.RadioButton rbLineBresenham;
         private System.Windows.Forms.RadioButton rbLineDDA;
@@ -258,6 +286,9 @@
         private System.Windows.Forms.Button btnClearArea;
         private System.Windows.Forms.NumericUpDown numericGon;
         private System.Windows.Forms.GroupBox grbNGon;
+        private System.Windows.Forms.Button btnShowCartesian;
+        private System.Windows.Forms.CheckBox cekTransform;
+        private System.Windows.Forms.PictureBox pnlDrawingArea;
     }
 }
 

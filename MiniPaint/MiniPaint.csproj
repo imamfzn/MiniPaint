@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Canvas\Cartesian.cs" />
+    <Compile Include="Canvas\Grid.cs" />
     <Compile Include="LineCreator\Bresenham.cs" />
     <Compile Include="LineCreator\DDA.cs" />
     <Compile Include="Form1.cs">
