@@ -41,7 +41,6 @@
             this.btnClearArea = new System.Windows.Forms.Button();
             this.numericGon = new System.Windows.Forms.NumericUpDown();
             this.grbNGon = new System.Windows.Forms.GroupBox();
-            this.btnShowCartesian = new System.Windows.Forms.Button();
             this.cekTransform = new System.Windows.Forms.CheckBox();
             this.pnlDrawingArea = new System.Windows.Forms.PictureBox();
             this.grbLine.SuspendLayout();
@@ -205,22 +204,11 @@
             this.grbNGon.TabStop = false;
             this.grbNGon.Text = "Degree of Polygon / Star";
             // 
-            // btnShowCartesian
-            // 
-            this.btnShowCartesian.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnShowCartesian.Location = new System.Drawing.Point(510, 379);
-            this.btnShowCartesian.Name = "btnShowCartesian";
-            this.btnShowCartesian.Size = new System.Drawing.Size(102, 27);
-            this.btnShowCartesian.TabIndex = 4;
-            this.btnShowCartesian.Text = "Show Cartesian";
-            this.btnShowCartesian.UseVisualStyleBackColor = true;
-            this.btnShowCartesian.Click += new System.EventHandler(this.btnShowCartesian_Click);
-            // 
             // cekTransform
             // 
             this.cekTransform.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cekTransform.AutoSize = true;
-            this.cekTransform.Location = new System.Drawing.Point(392, 385);
+            this.cekTransform.Location = new System.Drawing.Point(500, 385);
             this.cekTransform.Name = "cekTransform";
             this.cekTransform.Size = new System.Drawing.Size(112, 17);
             this.cekTransform.TabIndex = 5;
@@ -253,7 +241,6 @@
             this.ClientSize = new System.Drawing.Size(726, 422);
             this.Controls.Add(this.pnlDrawingArea);
             this.Controls.Add(this.cekTransform);
-            this.Controls.Add(this.btnShowCartesian);
             this.Controls.Add(this.btnClearArea);
             this.Controls.Add(this.grbNGon);
             this.Controls.Add(this.grbShape);
@@ -286,7 +273,6 @@
         private System.Windows.Forms.Button btnClearArea;
         private System.Windows.Forms.NumericUpDown numericGon;
         private System.Windows.Forms.GroupBox grbNGon;
-        private System.Windows.Forms.Button btnShowCartesian;
         private System.Windows.Forms.CheckBox cekTransform;
         private System.Windows.Forms.PictureBox pnlDrawingArea;
     }

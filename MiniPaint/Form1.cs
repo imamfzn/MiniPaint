@@ -185,11 +185,6 @@ namespace MiniPaint
             }
         }
 
-        private void btnShowCartesian_Click(object sender, EventArgs e)
-        {
-        
-        }
-
         private Point GetCenter(Point A, Point B)
         {
             return new Point((int)(A.X + B.X) / 2, (int)(A.Y + B.Y) / 2);
