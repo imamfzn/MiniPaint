@@ -215,7 +215,56 @@ namespace MiniPaint
                 }
                 else if (rbReflection.Checked)
                 {
-                    transform = ((ITransformation)objectDraw).Transform(tm.GetReflection(opt.m,opt.c));
+                    if (Double.IsInfinity(opt.m))
+                    {
+                        //plot garis y = mx + c
+                        using (Graphics g = Graphics.FromImage(drawingArea))
+                        {
+                            g.DrawLine(new Pen(Color.Black),new Point(grid.GetOrigin.X + (int)opt.c, 0),
+                                    new Point(grid.GetOrigin.X + (int)opt.c, pnlDrawingArea.Height));
+                           /* new DDA(
+                                new Line(
+                                    new Point(grid.GetOrigin.X+ (int)opt.c, 0), 
+                                    new Point(grid.GetOrigin.X +(int)opt.c, pnlDrawingArea.Height))).Draw(g);*/
+                        }
+
+                        //transform
+                        transform = ((ITransformation)objectDraw).Transform(tm.GetReflection(opt.c);
+                    }
+                    else
+                    {
+                        //plot garis y = mx + c
+                        Point pMax, pMin;
+                        if (opt.m == 0)
+                        {
+                            pMin = new Point(0, pnlDrawingArea.Height -(int) opt.c);
+                            pMax = new Point(pnlDrawingArea.Width, pnlDrawingArea.Height - (int)opt.c);
+                        }
+                        else
+                        {
+                            Double y = 1; int x;
+                            for (x = grid.GetOrigin.X; x < pnlDrawingArea.Width && y > 0; x++)
+                            {
+                                y = opt.m * x + opt.c;
+                            }
+                            pMax = new Point(x, (int)y);
+                            y = opt.m * grid.GetOrigin.X + opt.c;
+                            for (x = grid.GetOrigin.X - 1; x >= 0 && y < pnlDrawingArea.Height; x--)
+                            {
+                                y = opt.m * x + opt.c;
+                            }
+                            pMin = new Point(x, (int)y);
+                        }
+
+                        using (Graphics g = Graphics.FromImage(drawingArea))
+                        {
+                            new DDA(new Line(pMax, pMin)).Draw(g);
+                        }
+
+                        //transform
+                        transform = ((ITransformation)objectDraw).Transform(tm.GetReflection(opt.m, opt.c));
+                    }
+                    
                 }
                 else if (rbDilatation.Checked)
                 {

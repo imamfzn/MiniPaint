@@ -48,6 +48,16 @@ namespace MiniPaint
             };
         }
 
+        public Double[,] GetReflection(Double c)
+        {
+            return new Double[,]
+            {
+                {-1,0,0},
+                {0,1,0},
+                {2*c+center.X,0,1}
+            };
+        }
+
         public Double[,] GetDilatation(Double k)
         {
            return new Double[,]

@@ -28,6 +28,11 @@ namespace MiniPaint
                 alpha = - Convert.ToDouble(numAlpha.Value) * Math.PI / 180,
                 m = Convert.ToDouble(numGrad.Value), 
                 c = Convert.ToDouble(numConst.Value);
+            
+            if (rbRefLine2.Checked)
+            {
+                m = Double.PositiveInfinity;
+            }
 
             opt = new TransformOption(dx, dy, k, alpha, m, c);
             this.Close();
