@@ -14,6 +14,22 @@ using MiniPaint.LineCreator;
 
 namespace MiniPaint
 {
+    public struct TransformOption
+    {
+        public int dx, dy;
+        public Double k, alpha, m, c;
+
+        public TransformOption(int dx, int dy, Double k, Double alpha, Double m, Double c)
+        {
+            this.dx = dx;
+            this.dy = dy;
+            this.k = k;
+            this.alpha = alpha;
+            this.m = m;
+            this.c = c;
+        }
+    }
+
     public partial class Form1 : Form
     {
         private bool dragging;
@@ -23,6 +39,8 @@ namespace MiniPaint
         private int gridSize;
         private IDraw objectDraw;
         private TransformMatrices tm;
+        public TransformOption opt { get; set; }
+        public string opts {get;set;}
 
         public Form1()
         {
@@ -34,6 +52,9 @@ namespace MiniPaint
             gridSize = 50;
             grid = new Grid(gridSize, pnlDrawingArea.Width,pnlDrawingArea.Height);
             tm = new TransformMatrices(grid.GetOrigin);
+
+            //default transformation option
+            opt = new TransformOption(200, 0, 2, -Math.PI / 4, 0, 3);
         }
 
         private void pnlDrawingArea_Paint(object sender, PaintEventArgs e)
@@ -183,7 +204,24 @@ namespace MiniPaint
         {
             if (ckTransform.Checked && objectDraw != null)
             {
-                IDraw transform = ((ITransformation)objectDraw).Transform(tm.GetDilatation(3));
+                IDraw transform = objectDraw;
+                if (rbTranslation.Checked)
+                {
+                    transform = ((ITransformation)objectDraw).Transform(tm.GetTranslation(opt.dx,opt.dy));
+                }
+                else if (rbRotation.Checked)
+                {
+                    transform = ((ITransformation)objectDraw).Transform(tm.GetRotation(opt.alpha));
+                }
+                else if (rbReflection.Checked)
+                {
+                    transform = ((ITransformation)objectDraw).Transform(tm.GetReflection(opt.m,opt.c));
+                }
+                else if (rbDilatation.Checked)
+                {
+                    transform = ((ITransformation)objectDraw).Transform(tm.GetDilatation(opt.k));
+                }
+
                 using (Graphics g = Graphics.FromImage(drawingArea))
                 {
                     transform.Draw(g);
@@ -196,8 +234,11 @@ namespace MiniPaint
 
         private void btnOption_Click(object sender, EventArgs e)
         {
-            Form OptForm = new frmTransformationSetting();
-            OptForm.Show();
+            using (frmTransformationSetting OptForm = new frmTransformationSetting())
+            {
+                OptForm.ShowDialog();
+                opt = OptForm.opt;
+            }
         }
 
         private void cekTransform_CheckedChanged(object sender, EventArgs e)
