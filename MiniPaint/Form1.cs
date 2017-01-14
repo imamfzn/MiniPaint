@@ -33,7 +33,8 @@ namespace MiniPaint
             gridArea = new Bitmap(pnlDrawingArea.Width, pnlDrawingArea.Height);
             gridSize = 50;
             grid = new Grid(gridSize, pnlDrawingArea.Width,pnlDrawingArea.Height);
-            tm = new TransformMatrices(new Point(0, 0));
+            tm = new TransformMatrices(grid.GetOrigin);
+            MessageBox.Show(grid.GetOrigin.ToString());
         }
 
         private void pnlDrawingArea_Paint(object sender, PaintEventArgs e)
@@ -180,7 +181,7 @@ namespace MiniPaint
         {
             if (cekTransform.Checked && objectDraw != null && rbPolygon.Checked)
             {
-                IDraw transform = ((ITransformation)objectDraw).Transform(tm.GetTranslation(200, 0));
+                IDraw transform = ((ITransformation)objectDraw).Transform(tm.GetRotation(-Math.PI/2));
                 using (Graphics g = Graphics.FromImage(drawingArea))
                 {
                     transform.Draw(g);
