@@ -88,6 +88,7 @@
             this.btnClearArea.TabIndex = 8;
             this.btnClearArea.Text = "Clear";
             this.btnClearArea.UseVisualStyleBackColor = true;
+            this.btnClearArea.Click += new System.EventHandler(this.btnClearArea_Click);
             // 
             // tabControl1
             // 
@@ -312,6 +313,7 @@
             this.ckTransform.TabIndex = 9;
             this.ckTransform.Text = "Transform Method";
             this.ckTransform.UseVisualStyleBackColor = true;
+            this.ckTransform.CheckedChanged += new System.EventHandler(this.ckTransform_CheckedChanged);
             // 
             // rbTranslation
             // 

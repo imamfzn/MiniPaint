@@ -74,7 +74,7 @@ namespace MiniPaint
             if (dragging)
             {
                 objectDraw = GetDrawObject(start, e.Location);
-                drawingArea.Dispose();
+                //drawingArea.Dispose();
 
                 if (ckTransform.Checked)
                 {
@@ -228,7 +228,6 @@ namespace MiniPaint
                 }
 
                 pnlDrawingArea.Invalidate();
-
             }
         }
 
@@ -241,15 +240,27 @@ namespace MiniPaint
             }
         }
 
-        private void cekTransform_CheckedChanged(object sender, EventArgs e)
+        private void ckTransform_CheckedChanged(object sender, EventArgs e)
         {
             if (ckTransform.Checked)
             {
+                gridArea = new Bitmap(pnlDrawingArea.Width, pnlDrawingArea.Height);
                 using (Graphics g = Graphics.FromImage(gridArea))
                 {
                     grid.Draw(g);
                 }
+
+                drawingArea.Dispose();
+                drawingArea = gridArea;
             }
+
+            else
+            {
+                drawingArea.Dispose();
+                drawingArea = new Bitmap(pnlDrawingArea.Width, pnlDrawingArea.Height);
+            }
+
+            pnlDrawingArea.Invalidate();
         }
 
         private Point GetCenter(Point A, Point B)
