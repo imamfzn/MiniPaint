@@ -13,12 +13,14 @@ namespace MiniPaint.Shape
         private int n, r;
         private double degree;
         private Point center;
+        private Point[] plot;
         public Polygon(Point center,int n, int r,double degree)
         {
             this.n = n;
             this.r = r;
             this.degree = degree;
             this.center = center;
+            this.plot = this.GetPoints();
         }
 
         private Point[] GetPoints()
@@ -38,7 +40,6 @@ namespace MiniPaint.Shape
 
         public void Draw(Graphics g)
         {
-            Point[] plot = GetPoints();
             for (int i = 0; i < plot.Length; i++)
             {
                 //DDA(Plot[i], Plot[(i + 2) % N]);
