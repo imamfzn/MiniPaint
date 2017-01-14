@@ -25,5 +25,7 @@ namespace MiniPaint.Canvas
             int y = this.origin.Y - P.Y * this.size;
             return new Point(x, y);
         }
+
+       
     }
 }
