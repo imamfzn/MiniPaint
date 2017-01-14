@@ -9,7 +9,7 @@ namespace MiniPaint
 {
     class TransformMatrices
     {
-        private Point center;
+        public Point center;
 
         public TransformMatrices(Point center)
         {
@@ -54,7 +54,7 @@ namespace MiniPaint
            {
                 {k,0,0},
                 {0,k,0},
-                {0,0,1}
+                {center.X*(1-k),center.Y*(1-k),1}
            };
         }
 
