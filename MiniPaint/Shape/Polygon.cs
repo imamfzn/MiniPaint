@@ -8,7 +8,7 @@ using MiniPaint.LineCreator;
 
 namespace MiniPaint.Shape
 {
-    class Polygon : IDraw
+    class Polygon : IDraw,ITransformation
     {
         private int n, r;
         private double degree;
@@ -21,6 +21,11 @@ namespace MiniPaint.Shape
             this.degree = degree;
             this.center = center;
             this.plot = this.GetPoints();
+        }
+
+        public Polygon(Point[] plot)
+        {
+            this.plot = plot;
         }
 
         private Point[] GetPoints()
@@ -45,6 +50,16 @@ namespace MiniPaint.Shape
                 //DDA(Plot[i], Plot[(i + 2) % N]);
                 (new DDA(new Line(plot[i], plot[(i + 1) % n]))).Draw(g);
             }
+        }
+
+        public IDraw Transform(Graphics G,Double[][] Mt)
+        {
+            List<Point> Points = new List<Point>();
+            foreach (Point p in plot)
+            {
+                Points.Add(MatrixOperation.Multiply(p, Mt));
+            }
+            return new Polygon(Points.ToArray());
         }
     }
 }
