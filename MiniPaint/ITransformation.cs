@@ -7,8 +7,8 @@ using System.Drawing;
 
 namespace MiniPaint
 {
-    interface ITransformation
+    interface ITransformation:IDraw
     {
-        void Transform(Graphics g);
+        IDraw Transform(Graphics g);
     }
 }
