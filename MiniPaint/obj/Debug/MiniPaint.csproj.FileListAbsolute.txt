@@ -7,3 +7,4 @@ C:\Users\Imam Fauzan\Documents\Visual Studio 2015\Projects\New\MiniPaint\MiniPai
 C:\Users\Imam Fauzan\Documents\Visual Studio 2015\Projects\New\MiniPaint\MiniPaint\bin\Debug\MiniPaint.pdb
 C:\Users\Imam Fauzan\Documents\Visual Studio 2015\Projects\New\MiniPaint\MiniPaint\obj\Debug\MiniPaint.exe
 C:\Users\Imam Fauzan\Documents\Visual Studio 2015\Projects\New\MiniPaint\MiniPaint\obj\Debug\MiniPaint.pdb
+C:\Users\Imam Fauzan\documents\visual studio 2015\Projects\New\MiniPaint\MiniPaint\obj\Debug\MiniPaint.frmTransformationSetting.resources

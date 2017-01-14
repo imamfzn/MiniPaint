@@ -34,7 +34,6 @@ namespace MiniPaint
             gridSize = 50;
             grid = new Grid(gridSize, pnlDrawingArea.Width,pnlDrawingArea.Height);
             tm = new TransformMatrices(grid.GetOrigin);
-            MessageBox.Show(grid.GetOrigin.ToString());
         }
 
         private void pnlDrawingArea_Paint(object sender, PaintEventArgs e)
@@ -56,7 +55,7 @@ namespace MiniPaint
                 objectDraw = GetDrawObject(start, e.Location);
                 drawingArea.Dispose();
 
-                if (cekTransform.Checked)
+                if (ckTransform.Checked)
                 {
                     drawingArea = (Bitmap) gridArea.Clone();
                     using (Graphics g = Graphics.FromImage(drawingArea))
@@ -156,14 +155,17 @@ namespace MiniPaint
 
             //..change grid size
             grid.SetGrid(gridSize, panel.Width, panel.Height);
-
             gridArea.Dispose();
             gridArea = new Bitmap(panel.Width, panel.Height);
+            
+            //change origin transformation
+            tm.center = grid.GetOrigin;
+
+            //draw grid
             using (Graphics g = Graphics.FromImage(gridArea))
             {
                 grid.Draw(g);
             }
-
 
             if (drawingArea!= null)
             {
@@ -177,11 +179,11 @@ namespace MiniPaint
             pnlDrawingArea.Invalidate();
         }
 
-        private void btnTranslate_Click(object sender, EventArgs e)
+        private void btnTransform_Click(object sender, EventArgs e)
         {
-            if (cekTransform.Checked && objectDraw != null && rbPolygon.Checked)
+            if (ckTransform.Checked && objectDraw != null)
             {
-                IDraw transform = ((ITransformation)objectDraw).Transform(tm.GetRotation(-Math.PI/2));
+                IDraw transform = ((ITransformation)objectDraw).Transform(tm.GetDilatation(3));
                 using (Graphics g = Graphics.FromImage(drawingArea))
                 {
                     transform.Draw(g);
@@ -192,9 +194,15 @@ namespace MiniPaint
             }
         }
 
+        private void btnOption_Click(object sender, EventArgs e)
+        {
+            Form OptForm = new frmTransformationSetting();
+            OptForm.Show();
+        }
+
         private void cekTransform_CheckedChanged(object sender, EventArgs e)
         {
-            if (cekTransform.Checked)
+            if (ckTransform.Checked)
             {
                 using (Graphics g = Graphics.FromImage(gridArea))
                 {

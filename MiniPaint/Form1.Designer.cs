@@ -32,7 +32,6 @@
             this.btnClearArea = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.grbNGon = new System.Windows.Forms.GroupBox();
             this.numericGon = new System.Windows.Forms.NumericUpDown();
             this.grbShape = new System.Windows.Forms.GroupBox();
@@ -45,21 +44,22 @@
             this.rbLineBresenham = new System.Windows.Forms.RadioButton();
             this.rbLineDDA = new System.Windows.Forms.RadioButton();
             this.rbLineNaive = new System.Windows.Forms.RadioButton();
-            this.button1 = new System.Windows.Forms.Button();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnTransform = new System.Windows.Forms.Button();
+            this.btnOption = new System.Windows.Forms.Button();
             this.rbReflection = new System.Windows.Forms.RadioButton();
-            this.rbRotation = new System.Windows.Forms.RadioButton();
-            this.rbDilatation = new System.Windows.Forms.RadioButton();
+            this.ckTransform = new System.Windows.Forms.CheckBox();
             this.rbTranslation = new System.Windows.Forms.RadioButton();
-            this.cekTransform = new System.Windows.Forms.CheckBox();
-            this.btnTranslate = new System.Windows.Forms.Button();
+            this.rbDilatation = new System.Windows.Forms.RadioButton();
+            this.rbRotation = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.pnlDrawingArea)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
             this.grbNGon.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericGon)).BeginInit();
             this.grbShape.SuspendLayout();
             this.grbLine.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlDrawingArea
@@ -111,23 +111,6 @@
             this.tabPage1.Size = new System.Drawing.Size(922, 66);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Shape";
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.BackColor = System.Drawing.Color.Transparent;
-            this.tabPage2.Controls.Add(this.btnTranslate);
-            this.tabPage2.Controls.Add(this.button1);
-            this.tabPage2.Controls.Add(this.rbReflection);
-            this.tabPage2.Controls.Add(this.cekTransform);
-            this.tabPage2.Controls.Add(this.rbTranslation);
-            this.tabPage2.Controls.Add(this.rbDilatation);
-            this.tabPage2.Controls.Add(this.rbRotation);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(922, 66);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Transformation";
             // 
             // grbNGon
             // 
@@ -272,14 +255,42 @@
             this.rbLineNaive.Text = "Naive";
             this.rbLineNaive.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // tabPage2
             // 
-            this.button1.Location = new System.Drawing.Point(332, 24);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(85, 27);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "Options";
-            this.button1.UseVisualStyleBackColor = true;
+            this.tabPage2.BackColor = System.Drawing.Color.Transparent;
+            this.tabPage2.Controls.Add(this.btnTransform);
+            this.tabPage2.Controls.Add(this.btnOption);
+            this.tabPage2.Controls.Add(this.rbReflection);
+            this.tabPage2.Controls.Add(this.ckTransform);
+            this.tabPage2.Controls.Add(this.rbTranslation);
+            this.tabPage2.Controls.Add(this.rbDilatation);
+            this.tabPage2.Controls.Add(this.rbRotation);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(922, 66);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Transformation";
+            // 
+            // btnTransform
+            // 
+            this.btnTransform.Location = new System.Drawing.Point(423, 24);
+            this.btnTransform.Name = "btnTransform";
+            this.btnTransform.Size = new System.Drawing.Size(85, 27);
+            this.btnTransform.TabIndex = 12;
+            this.btnTransform.Text = "Transform";
+            this.btnTransform.UseVisualStyleBackColor = true;
+            this.btnTransform.Click += new System.EventHandler(this.btnTransform_Click);
+            // 
+            // btnOption
+            // 
+            this.btnOption.Location = new System.Drawing.Point(332, 24);
+            this.btnOption.Name = "btnOption";
+            this.btnOption.Size = new System.Drawing.Size(85, 27);
+            this.btnOption.TabIndex = 11;
+            this.btnOption.Text = "Options";
+            this.btnOption.UseVisualStyleBackColor = true;
+            this.btnOption.Click += new System.EventHandler(this.btnOption_Click);
             // 
             // rbReflection
             // 
@@ -292,27 +303,15 @@
             this.rbReflection.Text = "Reflection";
             this.rbReflection.UseVisualStyleBackColor = true;
             // 
-            // rbRotation
+            // ckTransform
             // 
-            this.rbRotation.AutoSize = true;
-            this.rbRotation.Location = new System.Drawing.Point(97, 34);
-            this.rbRotation.Name = "rbRotation";
-            this.rbRotation.Size = new System.Drawing.Size(65, 17);
-            this.rbRotation.TabIndex = 1;
-            this.rbRotation.TabStop = true;
-            this.rbRotation.Text = "Rotation";
-            this.rbRotation.UseVisualStyleBackColor = true;
-            // 
-            // rbDilatation
-            // 
-            this.rbDilatation.AutoSize = true;
-            this.rbDilatation.Location = new System.Drawing.Point(168, 34);
-            this.rbDilatation.Name = "rbDilatation";
-            this.rbDilatation.Size = new System.Drawing.Size(69, 17);
-            this.rbDilatation.TabIndex = 3;
-            this.rbDilatation.TabStop = true;
-            this.rbDilatation.Text = "Dilatation";
-            this.rbDilatation.UseVisualStyleBackColor = true;
+            this.ckTransform.AutoSize = true;
+            this.ckTransform.Location = new System.Drawing.Point(14, 10);
+            this.ckTransform.Name = "ckTransform";
+            this.ckTransform.Size = new System.Drawing.Size(112, 17);
+            this.ckTransform.TabIndex = 9;
+            this.ckTransform.Text = "Transform Method";
+            this.ckTransform.UseVisualStyleBackColor = true;
             // 
             // rbTranslation
             // 
@@ -326,24 +325,27 @@
             this.rbTranslation.Text = "Translation";
             this.rbTranslation.UseVisualStyleBackColor = true;
             // 
-            // cekTransform
+            // rbDilatation
             // 
-            this.cekTransform.AutoSize = true;
-            this.cekTransform.Location = new System.Drawing.Point(14, 10);
-            this.cekTransform.Name = "cekTransform";
-            this.cekTransform.Size = new System.Drawing.Size(112, 17);
-            this.cekTransform.TabIndex = 9;
-            this.cekTransform.Text = "Transform Method";
-            this.cekTransform.UseVisualStyleBackColor = true;
+            this.rbDilatation.AutoSize = true;
+            this.rbDilatation.Location = new System.Drawing.Point(168, 34);
+            this.rbDilatation.Name = "rbDilatation";
+            this.rbDilatation.Size = new System.Drawing.Size(69, 17);
+            this.rbDilatation.TabIndex = 3;
+            this.rbDilatation.TabStop = true;
+            this.rbDilatation.Text = "Dilatation";
+            this.rbDilatation.UseVisualStyleBackColor = true;
             // 
-            // btnTranslate
+            // rbRotation
             // 
-            this.btnTranslate.Location = new System.Drawing.Point(423, 24);
-            this.btnTranslate.Name = "btnTranslate";
-            this.btnTranslate.Size = new System.Drawing.Size(85, 27);
-            this.btnTranslate.TabIndex = 12;
-            this.btnTranslate.Text = "Transform";
-            this.btnTranslate.UseVisualStyleBackColor = true;
+            this.rbRotation.AutoSize = true;
+            this.rbRotation.Location = new System.Drawing.Point(97, 34);
+            this.rbRotation.Name = "rbRotation";
+            this.rbRotation.Size = new System.Drawing.Size(65, 17);
+            this.rbRotation.TabIndex = 1;
+            this.rbRotation.TabStop = true;
+            this.rbRotation.Text = "Rotation";
+            this.rbRotation.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -358,14 +360,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.pnlDrawingArea)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
             this.grbNGon.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numericGon)).EndInit();
             this.grbShape.ResumeLayout(false);
             this.grbShape.PerformLayout();
             this.grbLine.ResumeLayout(false);
             this.grbLine.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -388,10 +390,10 @@
         private System.Windows.Forms.RadioButton rbLineDDA;
         private System.Windows.Forms.RadioButton rbLineNaive;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.Button btnTranslate;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnTransform;
+        private System.Windows.Forms.Button btnOption;
         private System.Windows.Forms.RadioButton rbReflection;
-        private System.Windows.Forms.CheckBox cekTransform;
+        private System.Windows.Forms.CheckBox ckTransform;
         private System.Windows.Forms.RadioButton rbTranslation;
         private System.Windows.Forms.RadioButton rbDilatation;
         private System.Windows.Forms.RadioButton rbRotation;
