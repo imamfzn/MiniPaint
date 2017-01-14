@@ -26,6 +26,7 @@ namespace MiniPaint.Shape
         public Polygon(Point[] plot)
         {
             this.plot = plot;
+            this.n = plot.Length;
         }
 
         private Point[] GetPoints()
@@ -49,15 +50,18 @@ namespace MiniPaint.Shape
             {
                 //DDA(Plot[i], Plot[(i + 2) % N]);
                 (new DDA(new Line(plot[i], plot[(i + 1) % n]))).Draw(g);
+                Console.WriteLine(plot[i].ToString());
+
             }
         }
 
-        public IDraw Transform(Graphics G,Double[][] Mt)
+        public IDraw Transform(Double[,] Mt)
         {
             List<Point> Points = new List<Point>();
             foreach (Point p in plot)
             {
                 Points.Add(MatrixOperation.Multiply(p, Mt));
+                Console.WriteLine(p.ToString() + " -> " + MatrixOperation.Multiply(p, Mt).ToString());
             }
             return new Polygon(Points.ToArray());
         }
