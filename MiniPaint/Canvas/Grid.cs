@@ -17,7 +17,6 @@ namespace MiniPaint.Canvas
         public Grid(int size, int wPanel, int hPanel)
         {
             this.SetGrid(size, wPanel, hPanel);
-            this.origin = new Point(wPanel, hPanel);
             this.cart = new Cartesian(wPanel, hPanel, size);
         }
 
@@ -28,8 +27,8 @@ namespace MiniPaint.Canvas
             this.wPanel = wPanel;
             this.midX = (wPanel / size / 2) * size;
             this.midY = (hPanel / size / 2) * size;
-            this.origin.X = wPanel;
-            this.origin.Y = hPanel;
+            this.origin.X = midX;
+            this.origin.Y = midY;
         }
 
         public void Draw(Graphics g)
@@ -51,6 +50,8 @@ namespace MiniPaint.Canvas
             g.DrawLine(new Pen(Color.Black), this.midX, 0, this.midX, hPanel);
             g.DrawLine(new Pen(Color.Black), 0,this.midY, wPanel, this.midY);
         }
+
+        public Point GetOrigin { get { return this.origin; } }
 
         public override string ToString()
         {
