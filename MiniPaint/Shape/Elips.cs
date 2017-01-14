@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace MiniPaint.Shape
 {
-    class Elips : IDraw
+    class Elips : IDraw,ITransformation
     {
         private Point center;
         private int rX, rY;
@@ -74,6 +74,12 @@ namespace MiniPaint.Shape
         public void DrawElips(Graphics g, Point P)
         {
             g.FillRectangle(Brushes.Black, new Rectangle(P, new Size(1, 1)));
+        }
+
+        public IDraw Transform(Double[,] Mt)
+        {
+            Point ct = MatrixOperation.Multiply(this.center, Mt);
+            return new Elips(ct, rX, rY);
         }
     }
 }

@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace MiniPaint.Shape
 {
-    class Circle : IDraw
+    class Circle : IDraw, ITransformation
     {
         private Point center;
         private int r;
@@ -49,6 +49,12 @@ namespace MiniPaint.Shape
         private void DrawCircle(Graphics g, Point P)
         {
             g.FillRectangle(Brushes.Black, new Rectangle(P, new Size(1, 1)));
+        }
+
+        public IDraw Transform(Double[,] Mt)
+        {
+            Point ct = MatrixOperation.Multiply(this.center, Mt);
+            return new Circle(ct, r);
         }
     }
 }
