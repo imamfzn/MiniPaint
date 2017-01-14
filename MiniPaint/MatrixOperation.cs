@@ -9,21 +9,25 @@ namespace MiniPaint
 {
     static class MatrixOperation
     {
-        public static Point Multiply(Point P, Double[][] Mt)
+        public static Point Multiply(Point P, Double[,] Mt)
         {
             Double[] Mp = PointToMatrix(P);
             Double[] Res = new Double[Mp.Length];
+
             for (int i = 0; i < Mp.Length; i++)
             {
                 for (int j = 0; j<Mp.Length;j++)
                 {
+                   
                     Res[j] = 0;
-                    for (int k = 0; k <= j; k++)
+                    for (int k = 0; k < Mp.Length; k++)
                     {
-                        Res[j] += Mp[k] * Mt[j][k];
+                        Res[j] += Mp[k] * Mt[k, j];
                     }
+                  
                 }
             }
+            
             return new Point((int)Res[0], (int)Res[1]);
         }
 
