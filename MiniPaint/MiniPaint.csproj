@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,6 +49,12 @@
   <ItemGroup>
     <Compile Include="Canvas\Cartesian.cs" />
     <Compile Include="Canvas\Grid.cs" />
+    <Compile Include="frmTransformationSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTransformationSetting.Designer.cs">
+      <DependentUpon>frmTransformationSetting.cs</DependentUpon>
+    </Compile>
     <Compile Include="ITransformation.cs" />
     <Compile Include="LineCreator\Bresenham.cs" />
     <Compile Include="LineCreator\DDA.cs" />
@@ -70,6 +77,9 @@
     <Compile Include="TransformMatrices.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTransformationSetting.resx">
+      <DependentUpon>frmTransformationSetting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

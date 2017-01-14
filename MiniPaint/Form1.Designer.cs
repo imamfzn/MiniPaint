@@ -28,74 +28,133 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.grbLine = new System.Windows.Forms.GroupBox();
-            this.rbLineBresenham = new System.Windows.Forms.RadioButton();
-            this.rbLineDDA = new System.Windows.Forms.RadioButton();
-            this.rbLineNaive = new System.Windows.Forms.RadioButton();
+            this.pnlDrawingArea = new System.Windows.Forms.PictureBox();
+            this.btnClearArea = new System.Windows.Forms.Button();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.grbNGon = new System.Windows.Forms.GroupBox();
+            this.numericGon = new System.Windows.Forms.NumericUpDown();
             this.grbShape = new System.Windows.Forms.GroupBox();
             this.rbStar = new System.Windows.Forms.RadioButton();
             this.rbPolygon = new System.Windows.Forms.RadioButton();
             this.rbElips = new System.Windows.Forms.RadioButton();
             this.rbCircle = new System.Windows.Forms.RadioButton();
             this.rbLine = new System.Windows.Forms.RadioButton();
-            this.btnClearArea = new System.Windows.Forms.Button();
-            this.numericGon = new System.Windows.Forms.NumericUpDown();
-            this.grbNGon = new System.Windows.Forms.GroupBox();
+            this.grbLine = new System.Windows.Forms.GroupBox();
+            this.rbLineBresenham = new System.Windows.Forms.RadioButton();
+            this.rbLineDDA = new System.Windows.Forms.RadioButton();
+            this.rbLineNaive = new System.Windows.Forms.RadioButton();
+            this.button1 = new System.Windows.Forms.Button();
+            this.rbReflection = new System.Windows.Forms.RadioButton();
+            this.rbRotation = new System.Windows.Forms.RadioButton();
+            this.rbDilatation = new System.Windows.Forms.RadioButton();
+            this.rbTranslation = new System.Windows.Forms.RadioButton();
             this.cekTransform = new System.Windows.Forms.CheckBox();
-            this.pnlDrawingArea = new System.Windows.Forms.PictureBox();
             this.btnTranslate = new System.Windows.Forms.Button();
-            this.grbLine.SuspendLayout();
-            this.grbShape.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericGon)).BeginInit();
-            this.grbNGon.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlDrawingArea)).BeginInit();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.grbNGon.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericGon)).BeginInit();
+            this.grbShape.SuspendLayout();
+            this.grbLine.SuspendLayout();
             this.SuspendLayout();
             // 
-            // grbLine
+            // pnlDrawingArea
             // 
-            this.grbLine.Controls.Add(this.rbLineBresenham);
-            this.grbLine.Controls.Add(this.rbLineDDA);
-            this.grbLine.Controls.Add(this.rbLineNaive);
-            this.grbLine.Location = new System.Drawing.Point(338, 12);
-            this.grbLine.Name = "grbLine";
-            this.grbLine.Size = new System.Drawing.Size(201, 50);
-            this.grbLine.TabIndex = 1;
-            this.grbLine.TabStop = false;
-            this.grbLine.Text = "Line Algorithm";
+            this.pnlDrawingArea.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlDrawingArea.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlDrawingArea.Location = new System.Drawing.Point(16, 110);
+            this.pnlDrawingArea.Name = "pnlDrawingArea";
+            this.pnlDrawingArea.Size = new System.Drawing.Size(922, 307);
+            this.pnlDrawingArea.TabIndex = 6;
+            this.pnlDrawingArea.TabStop = false;
+            this.pnlDrawingArea.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlDrawingArea_Paint);
+            this.pnlDrawingArea.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlDrawingArea_MouseDown);
+            this.pnlDrawingArea.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlDrawingArea_MouseMove);
+            this.pnlDrawingArea.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnlDrawingArea_MouseUp);
+            this.pnlDrawingArea.Resize += new System.EventHandler(this.pnlDrawingArea_Resize);
             // 
-            // rbLineBresenham
+            // btnClearArea
             // 
-            this.rbLineBresenham.AutoSize = true;
-            this.rbLineBresenham.Location = new System.Drawing.Point(119, 19);
-            this.rbLineBresenham.Name = "rbLineBresenham";
-            this.rbLineBresenham.Size = new System.Drawing.Size(78, 17);
-            this.rbLineBresenham.TabIndex = 7;
-            this.rbLineBresenham.TabStop = true;
-            this.rbLineBresenham.Text = "Bresenham";
-            this.rbLineBresenham.UseVisualStyleBackColor = true;
+            this.btnClearArea.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClearArea.Location = new System.Drawing.Point(853, 423);
+            this.btnClearArea.Name = "btnClearArea";
+            this.btnClearArea.Size = new System.Drawing.Size(85, 27);
+            this.btnClearArea.TabIndex = 8;
+            this.btnClearArea.Text = "Clear";
+            this.btnClearArea.UseVisualStyleBackColor = true;
             // 
-            // rbLineDDA
+            // tabControl1
             // 
-            this.rbLineDDA.AutoSize = true;
-            this.rbLineDDA.Location = new System.Drawing.Point(65, 19);
-            this.rbLineDDA.Name = "rbLineDDA";
-            this.rbLineDDA.Size = new System.Drawing.Size(48, 17);
-            this.rbLineDDA.TabIndex = 6;
-            this.rbLineDDA.TabStop = true;
-            this.rbLineDDA.Text = "DDA";
-            this.rbLineDDA.UseVisualStyleBackColor = true;
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Location = new System.Drawing.Point(12, 12);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(930, 92);
+            this.tabControl1.TabIndex = 12;
             // 
-            // rbLineNaive
+            // tabPage1
             // 
-            this.rbLineNaive.AutoSize = true;
-            this.rbLineNaive.Checked = true;
-            this.rbLineNaive.Location = new System.Drawing.Point(6, 19);
-            this.rbLineNaive.Name = "rbLineNaive";
-            this.rbLineNaive.Size = new System.Drawing.Size(53, 17);
-            this.rbLineNaive.TabIndex = 5;
-            this.rbLineNaive.TabStop = true;
-            this.rbLineNaive.Text = "Naive";
-            this.rbLineNaive.UseVisualStyleBackColor = true;
+            this.tabPage1.BackColor = System.Drawing.Color.Transparent;
+            this.tabPage1.Controls.Add(this.grbNGon);
+            this.tabPage1.Controls.Add(this.grbShape);
+            this.tabPage1.Controls.Add(this.grbLine);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(922, 66);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Shape";
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.BackColor = System.Drawing.Color.Transparent;
+            this.tabPage2.Controls.Add(this.btnTranslate);
+            this.tabPage2.Controls.Add(this.button1);
+            this.tabPage2.Controls.Add(this.rbReflection);
+            this.tabPage2.Controls.Add(this.cekTransform);
+            this.tabPage2.Controls.Add(this.rbTranslation);
+            this.tabPage2.Controls.Add(this.rbDilatation);
+            this.tabPage2.Controls.Add(this.rbRotation);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(922, 66);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Transformation";
+            // 
+            // grbNGon
+            // 
+            this.grbNGon.Controls.Add(this.numericGon);
+            this.grbNGon.Location = new System.Drawing.Point(516, 6);
+            this.grbNGon.Name = "grbNGon";
+            this.grbNGon.Size = new System.Drawing.Size(158, 50);
+            this.grbNGon.TabIndex = 3;
+            this.grbNGon.TabStop = false;
+            this.grbNGon.Text = "Degree of Polygon / Star";
+            // 
+            // numericGon
+            // 
+            this.numericGon.Location = new System.Drawing.Point(6, 19);
+            this.numericGon.Minimum = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            this.numericGon.Name = "numericGon";
+            this.numericGon.Size = new System.Drawing.Size(146, 20);
+            this.numericGon.TabIndex = 4;
+            this.numericGon.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
             // 
             // grbShape
             // 
@@ -104,10 +163,10 @@
             this.grbShape.Controls.Add(this.rbElips);
             this.grbShape.Controls.Add(this.rbCircle);
             this.grbShape.Controls.Add(this.rbLine);
-            this.grbShape.Location = new System.Drawing.Point(35, 12);
+            this.grbShape.Location = new System.Drawing.Point(6, 6);
             this.grbShape.Name = "grbShape";
             this.grbShape.Size = new System.Drawing.Size(297, 50);
-            this.grbShape.TabIndex = 2;
+            this.grbShape.TabIndex = 5;
             this.grbShape.TabStop = false;
             this.grbShape.Text = "Shapes";
             // 
@@ -167,128 +226,175 @@
             this.rbLine.Text = "Line";
             this.rbLine.UseVisualStyleBackColor = true;
             // 
-            // btnClearArea
+            // grbLine
             // 
-            this.btnClearArea.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClearArea.Location = new System.Drawing.Point(618, 379);
-            this.btnClearArea.Name = "btnClearArea";
-            this.btnClearArea.Size = new System.Drawing.Size(85, 27);
-            this.btnClearArea.TabIndex = 3;
-            this.btnClearArea.Text = "Clear";
-            this.btnClearArea.UseVisualStyleBackColor = true;
-            this.btnClearArea.Click += new System.EventHandler(this.btnClearArea_Click);
+            this.grbLine.Controls.Add(this.rbLineBresenham);
+            this.grbLine.Controls.Add(this.rbLineDDA);
+            this.grbLine.Controls.Add(this.rbLineNaive);
+            this.grbLine.Location = new System.Drawing.Point(309, 6);
+            this.grbLine.Name = "grbLine";
+            this.grbLine.Size = new System.Drawing.Size(201, 50);
+            this.grbLine.TabIndex = 4;
+            this.grbLine.TabStop = false;
+            this.grbLine.Text = "Line Algorithm";
             // 
-            // numericGon
+            // rbLineBresenham
             // 
-            this.numericGon.Location = new System.Drawing.Point(6, 19);
-            this.numericGon.Minimum = new decimal(new int[] {
-            3,
-            0,
-            0,
-            0});
-            this.numericGon.Name = "numericGon";
-            this.numericGon.Size = new System.Drawing.Size(146, 20);
-            this.numericGon.TabIndex = 4;
-            this.numericGon.Value = new decimal(new int[] {
-            3,
-            0,
-            0,
-            0});
+            this.rbLineBresenham.AutoSize = true;
+            this.rbLineBresenham.Location = new System.Drawing.Point(119, 19);
+            this.rbLineBresenham.Name = "rbLineBresenham";
+            this.rbLineBresenham.Size = new System.Drawing.Size(78, 17);
+            this.rbLineBresenham.TabIndex = 7;
+            this.rbLineBresenham.TabStop = true;
+            this.rbLineBresenham.Text = "Bresenham";
+            this.rbLineBresenham.UseVisualStyleBackColor = true;
             // 
-            // grbNGon
+            // rbLineDDA
             // 
-            this.grbNGon.Controls.Add(this.numericGon);
-            this.grbNGon.Location = new System.Drawing.Point(545, 12);
-            this.grbNGon.Name = "grbNGon";
-            this.grbNGon.Size = new System.Drawing.Size(158, 50);
-            this.grbNGon.TabIndex = 0;
-            this.grbNGon.TabStop = false;
-            this.grbNGon.Text = "Degree of Polygon / Star";
+            this.rbLineDDA.AutoSize = true;
+            this.rbLineDDA.Location = new System.Drawing.Point(65, 19);
+            this.rbLineDDA.Name = "rbLineDDA";
+            this.rbLineDDA.Size = new System.Drawing.Size(48, 17);
+            this.rbLineDDA.TabIndex = 6;
+            this.rbLineDDA.TabStop = true;
+            this.rbLineDDA.Text = "DDA";
+            this.rbLineDDA.UseVisualStyleBackColor = true;
+            // 
+            // rbLineNaive
+            // 
+            this.rbLineNaive.AutoSize = true;
+            this.rbLineNaive.Checked = true;
+            this.rbLineNaive.Location = new System.Drawing.Point(6, 19);
+            this.rbLineNaive.Name = "rbLineNaive";
+            this.rbLineNaive.Size = new System.Drawing.Size(53, 17);
+            this.rbLineNaive.TabIndex = 5;
+            this.rbLineNaive.TabStop = true;
+            this.rbLineNaive.Text = "Naive";
+            this.rbLineNaive.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(332, 24);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(85, 27);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "Options";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // rbReflection
+            // 
+            this.rbReflection.AutoSize = true;
+            this.rbReflection.Location = new System.Drawing.Point(243, 34);
+            this.rbReflection.Name = "rbReflection";
+            this.rbReflection.Size = new System.Drawing.Size(73, 17);
+            this.rbReflection.TabIndex = 2;
+            this.rbReflection.TabStop = true;
+            this.rbReflection.Text = "Reflection";
+            this.rbReflection.UseVisualStyleBackColor = true;
+            // 
+            // rbRotation
+            // 
+            this.rbRotation.AutoSize = true;
+            this.rbRotation.Location = new System.Drawing.Point(97, 34);
+            this.rbRotation.Name = "rbRotation";
+            this.rbRotation.Size = new System.Drawing.Size(65, 17);
+            this.rbRotation.TabIndex = 1;
+            this.rbRotation.TabStop = true;
+            this.rbRotation.Text = "Rotation";
+            this.rbRotation.UseVisualStyleBackColor = true;
+            // 
+            // rbDilatation
+            // 
+            this.rbDilatation.AutoSize = true;
+            this.rbDilatation.Location = new System.Drawing.Point(168, 34);
+            this.rbDilatation.Name = "rbDilatation";
+            this.rbDilatation.Size = new System.Drawing.Size(69, 17);
+            this.rbDilatation.TabIndex = 3;
+            this.rbDilatation.TabStop = true;
+            this.rbDilatation.Text = "Dilatation";
+            this.rbDilatation.UseVisualStyleBackColor = true;
+            // 
+            // rbTranslation
+            // 
+            this.rbTranslation.AutoSize = true;
+            this.rbTranslation.Checked = true;
+            this.rbTranslation.Location = new System.Drawing.Point(14, 34);
+            this.rbTranslation.Name = "rbTranslation";
+            this.rbTranslation.Size = new System.Drawing.Size(77, 17);
+            this.rbTranslation.TabIndex = 0;
+            this.rbTranslation.TabStop = true;
+            this.rbTranslation.Text = "Translation";
+            this.rbTranslation.UseVisualStyleBackColor = true;
             // 
             // cekTransform
             // 
-            this.cekTransform.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cekTransform.AutoSize = true;
-            this.cekTransform.Location = new System.Drawing.Point(403, 385);
+            this.cekTransform.Location = new System.Drawing.Point(14, 10);
             this.cekTransform.Name = "cekTransform";
             this.cekTransform.Size = new System.Drawing.Size(112, 17);
-            this.cekTransform.TabIndex = 5;
+            this.cekTransform.TabIndex = 9;
             this.cekTransform.Text = "Transform Method";
             this.cekTransform.UseVisualStyleBackColor = true;
-            this.cekTransform.CheckedChanged += new System.EventHandler(this.cekTransform_CheckedChanged);
-            // 
-            // pnlDrawingArea
-            // 
-            this.pnlDrawingArea.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlDrawingArea.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlDrawingArea.Location = new System.Drawing.Point(35, 68);
-            this.pnlDrawingArea.Name = "pnlDrawingArea";
-            this.pnlDrawingArea.Size = new System.Drawing.Size(668, 305);
-            this.pnlDrawingArea.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pnlDrawingArea.TabIndex = 6;
-            this.pnlDrawingArea.TabStop = false;
-            this.pnlDrawingArea.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlDrawingArea_Paint);
-            this.pnlDrawingArea.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlDrawingArea_MouseDown);
-            this.pnlDrawingArea.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlDrawingArea_MouseMove);
-            this.pnlDrawingArea.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnlDrawingArea_MouseUp);
-            this.pnlDrawingArea.Resize += new System.EventHandler(this.pnlDrawingArea_Resize);
             // 
             // btnTranslate
             // 
-            this.btnTranslate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTranslate.Location = new System.Drawing.Point(527, 379);
+            this.btnTranslate.Location = new System.Drawing.Point(423, 24);
             this.btnTranslate.Name = "btnTranslate";
             this.btnTranslate.Size = new System.Drawing.Size(85, 27);
-            this.btnTranslate.TabIndex = 7;
-            this.btnTranslate.Text = "Translate";
+            this.btnTranslate.TabIndex = 12;
+            this.btnTranslate.Text = "Transform";
             this.btnTranslate.UseVisualStyleBackColor = true;
-            this.btnTranslate.Click += new System.EventHandler(this.btnTranslate_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(726, 422);
-            this.Controls.Add(this.btnTranslate);
-            this.Controls.Add(this.pnlDrawingArea);
-            this.Controls.Add(this.cekTransform);
+            this.ClientSize = new System.Drawing.Size(954, 462);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.btnClearArea);
-            this.Controls.Add(this.grbNGon);
-            this.Controls.Add(this.grbShape);
-            this.Controls.Add(this.grbLine);
+            this.Controls.Add(this.pnlDrawingArea);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.grbLine.ResumeLayout(false);
-            this.grbLine.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pnlDrawingArea)).EndInit();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            this.grbNGon.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numericGon)).EndInit();
             this.grbShape.ResumeLayout(false);
             this.grbShape.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericGon)).EndInit();
-            this.grbNGon.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pnlDrawingArea)).EndInit();
+            this.grbLine.ResumeLayout(false);
+            this.grbLine.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.GroupBox grbLine;
-        private System.Windows.Forms.RadioButton rbLineBresenham;
-        private System.Windows.Forms.RadioButton rbLineDDA;
-        private System.Windows.Forms.RadioButton rbLineNaive;
+        private System.Windows.Forms.PictureBox pnlDrawingArea;
+        private System.Windows.Forms.Button btnClearArea;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.GroupBox grbNGon;
+        private System.Windows.Forms.NumericUpDown numericGon;
         private System.Windows.Forms.GroupBox grbShape;
         private System.Windows.Forms.RadioButton rbStar;
         private System.Windows.Forms.RadioButton rbPolygon;
         private System.Windows.Forms.RadioButton rbElips;
         private System.Windows.Forms.RadioButton rbCircle;
         private System.Windows.Forms.RadioButton rbLine;
-        private System.Windows.Forms.Button btnClearArea;
-        private System.Windows.Forms.NumericUpDown numericGon;
-        private System.Windows.Forms.GroupBox grbNGon;
-        private System.Windows.Forms.CheckBox cekTransform;
-        private System.Windows.Forms.PictureBox pnlDrawingArea;
+        private System.Windows.Forms.GroupBox grbLine;
+        private System.Windows.Forms.RadioButton rbLineBresenham;
+        private System.Windows.Forms.RadioButton rbLineDDA;
+        private System.Windows.Forms.RadioButton rbLineNaive;
+        private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Button btnTranslate;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.RadioButton rbReflection;
+        private System.Windows.Forms.CheckBox cekTransform;
+        private System.Windows.Forms.RadioButton rbTranslation;
+        private System.Windows.Forms.RadioButton rbDilatation;
+        private System.Windows.Forms.RadioButton rbRotation;
     }
 }
 
