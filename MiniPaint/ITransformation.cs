@@ -9,6 +9,6 @@ namespace MiniPaint
 {
     interface ITransformation:IDraw
     {
-        IDraw Transform(Graphics g, MatrixOperation m);
+        IDraw Transform(Graphics g, Double[][] Mt);
     }
 }
