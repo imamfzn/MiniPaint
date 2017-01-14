@@ -21,7 +21,8 @@ namespace MiniPaint
         private Bitmap drawingArea, lastDrawing, gridArea;
         private Grid grid;
         private int gridSize;
-        private IDraw lastObjDraw;
+        private IDraw objectDraw;
+        private TransformMatrices tm;
 
         public Form1()
         {
@@ -30,9 +31,9 @@ namespace MiniPaint
             start = new Point(0, 0);
             drawingArea = new Bitmap(pnlDrawingArea.Width,pnlDrawingArea.Height);
             gridArea = new Bitmap(pnlDrawingArea.Width, pnlDrawingArea.Height);
-            lastObjDraw = null;
             gridSize = 50;
             grid = new Grid(gridSize, pnlDrawingArea.Width,pnlDrawingArea.Height);
+            tm = new TransformMatrices(new Point(0, 0));
         }
 
         private void pnlDrawingArea_Paint(object sender, PaintEventArgs e)
@@ -51,7 +52,7 @@ namespace MiniPaint
         {
             if (dragging)
             {
-                IDraw objectDraw = GetDrawObject(start, e.Location);
+                objectDraw = GetDrawObject(start, e.Location);
                 drawingArea.Dispose();
 
                 if (cekTransform.Checked)
@@ -62,6 +63,7 @@ namespace MiniPaint
                         grid.Draw(g);
                     }
                 }
+
                 else
                 {
                     drawingArea = (Bitmap)lastDrawing.Clone();
@@ -172,6 +174,21 @@ namespace MiniPaint
             }
             drawingArea = resizeArea;
             pnlDrawingArea.Invalidate();
+        }
+
+        private void btnTranslate_Click(object sender, EventArgs e)
+        {
+            if (cekTransform.Checked && objectDraw != null && rbPolygon.Checked)
+            {
+                IDraw transform = ((ITransformation)objectDraw).Transform(tm.GetTranslation(200, 0));
+                using (Graphics g = Graphics.FromImage(drawingArea))
+                {
+                    transform.Draw(g);
+                }
+
+                pnlDrawingArea.Invalidate();
+
+            }
         }
 
         private void cekTransform_CheckedChanged(object sender, EventArgs e)

@@ -43,6 +43,7 @@
             this.grbNGon = new System.Windows.Forms.GroupBox();
             this.cekTransform = new System.Windows.Forms.CheckBox();
             this.pnlDrawingArea = new System.Windows.Forms.PictureBox();
+            this.btnTranslate = new System.Windows.Forms.Button();
             this.grbLine.SuspendLayout();
             this.grbShape.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericGon)).BeginInit();
@@ -208,7 +209,7 @@
             // 
             this.cekTransform.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cekTransform.AutoSize = true;
-            this.cekTransform.Location = new System.Drawing.Point(500, 385);
+            this.cekTransform.Location = new System.Drawing.Point(403, 385);
             this.cekTransform.Name = "cekTransform";
             this.cekTransform.Size = new System.Drawing.Size(112, 17);
             this.cekTransform.TabIndex = 5;
@@ -234,11 +235,23 @@
             this.pnlDrawingArea.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnlDrawingArea_MouseUp);
             this.pnlDrawingArea.Resize += new System.EventHandler(this.pnlDrawingArea_Resize);
             // 
+            // btnTranslate
+            // 
+            this.btnTranslate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnTranslate.Location = new System.Drawing.Point(527, 379);
+            this.btnTranslate.Name = "btnTranslate";
+            this.btnTranslate.Size = new System.Drawing.Size(85, 27);
+            this.btnTranslate.TabIndex = 7;
+            this.btnTranslate.Text = "Translate";
+            this.btnTranslate.UseVisualStyleBackColor = true;
+            this.btnTranslate.Click += new System.EventHandler(this.btnTranslate_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(726, 422);
+            this.Controls.Add(this.btnTranslate);
             this.Controls.Add(this.pnlDrawingArea);
             this.Controls.Add(this.cekTransform);
             this.Controls.Add(this.btnClearArea);
@@ -275,6 +288,7 @@
         private System.Windows.Forms.GroupBox grbNGon;
         private System.Windows.Forms.CheckBox cekTransform;
         private System.Windows.Forms.PictureBox pnlDrawingArea;
+        private System.Windows.Forms.Button btnTranslate;
     }
 }
 
