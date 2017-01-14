@@ -28,12 +28,14 @@ namespace MiniPaint
 
         public Double[,] GetRotation(Double alpha)
         {
-           return new Double[,]
-           {
+            Double cx = center.X + center.Y * Math.Sin(alpha) - center.X * Math.Cos(alpha);
+            Double cy = center.Y - center.X * Math.Sin(alpha) - center.Y * Math.Cos(alpha);
+            return new Double[,]
+            {
                 {Math.Cos(alpha),Math.Sin(alpha),0},
                 {-Math.Sin(alpha), Math.Cos(alpha),0},
-                {0,0,1 }
-           };
+                {cx,cy,1 }
+            };
         }
 
         public Double[,] GetReflection(Double m,Double c)
