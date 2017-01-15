@@ -27,6 +27,8 @@ namespace MiniPaint
                   
                 }
             }
+
+            Console.WriteLine(P.ToString() + " >> " + new Point((int)Res[0], (int)Res[1]).ToString());
             
             return new Point((int)Res[0], (int)Res[1]);
         }

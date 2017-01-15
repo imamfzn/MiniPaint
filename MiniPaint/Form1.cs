@@ -55,6 +55,7 @@ namespace MiniPaint
 
             //default transformation option
             opt = new TransformOption(200, 0, 2, -Math.PI / 4, 0, 3);
+            MessageBox.Show(grid.GetOrigin.ToString());
         }
 
         private void pnlDrawingArea_Paint(object sender, PaintEventArgs e)
@@ -229,7 +230,7 @@ namespace MiniPaint
                         }
 
                         //transform
-                        transform = ((ITransformation)objectDraw).Transform(tm.GetReflection(opt.c);
+                        transform = ((ITransformation)objectDraw).Transform(tm.GetReflection(opt.c));
                     }
                     else
                     {
@@ -237,8 +238,8 @@ namespace MiniPaint
                         Point pMax, pMin;
                         if (opt.m == 0)
                         {
-                            pMin = new Point(0, pnlDrawingArea.Height -(int) opt.c);
-                            pMax = new Point(pnlDrawingArea.Width, pnlDrawingArea.Height - (int)opt.c);
+                            pMin = new Point(0, grid.GetOrigin.Y -(int) opt.c);
+                            pMax = new Point(pnlDrawingArea.Width, grid.GetOrigin.Y - (int)opt.c);
                         }
                         else
                         {
@@ -259,6 +260,7 @@ namespace MiniPaint
                         using (Graphics g = Graphics.FromImage(drawingArea))
                         {
                             new DDA(new Line(pMax, pMin)).Draw(g);
+                            g.DrawLine(new Pen(Color.Black), pMax,pMin);
                         }
 
                         //transform

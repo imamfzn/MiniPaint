@@ -40,11 +40,13 @@ namespace MiniPaint
 
         public Double[,] GetReflection(Double m,Double c)
         {
+            Double div = m * m + 1;
+
             return new Double[,]
             {
-                {0,0,0},
-                {0,0,0},
-                {0,0,1}
+                {(1-m*m)/div,-2*m/div,0},
+                {-2*m/div,(m*m-1)/div,0},
+                {-2*(center.X+c)*m/div, 2*(center.Y-c)/div ,1}
             };
         }
 
@@ -54,7 +56,7 @@ namespace MiniPaint
             {
                 {-1,0,0},
                 {0,1,0},
-                {2*c+center.X,0,1}
+                {2*(c+center.X),0,1}
             };
         }
 
