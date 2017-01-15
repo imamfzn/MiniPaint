@@ -44,16 +44,9 @@ namespace MiniPaint.Shape
                 DrawCircle(g, (new Point(center.X - y, center.Y - x)));
             }
 
-            /*.. 15 Januari 2017, 22:31
-              .. pada bagian atas, kanan, bawah, kiri sejauh r dari titik pusat lingkaran pixel tidak terisi, 
-              .. sehingga saat melakaukan filling pada lingkaran kan loss
-              .. sementara saya tambahkan beberapa baris untuk menambah pixel yang bolong
-            */
             //add loss pixel
-            DrawCircle(g, (new Point(center.X, center.Y + r)));
-            DrawCircle(g, (new Point(center.X, center.Y - r)));
-            DrawCircle(g, (new Point(center.X + r, center.Y)));
-            DrawCircle(g, (new Point(center.X - r, center.Y)));
+            AddLossPixel(g);
+            
         }
 
         private void DrawCircle(Graphics g, Point P)
@@ -65,6 +58,20 @@ namespace MiniPaint.Shape
         {
             Point ct = MatrixOperation.Multiply(this.center, Mt);
             return new Circle(ct, r);
+        }
+
+
+        /*.. 15 Januari 2017, 22:31
+          .. pada bagian atas, kanan, bawah, kiri sejauh r dari titik pusat lingkaran pixel tidak terisi, 
+          .. sehingga saat melakaukan filling pada lingkaran kan loss
+          .. sementara saya tambahkan beberapa baris untuk menambah pixel yang bolong
+        */
+        private void AddLossPixel(Graphics g)
+        {
+            DrawCircle(g, (new Point(center.X, center.Y + r)));
+            DrawCircle(g, (new Point(center.X, center.Y - r)));
+            DrawCircle(g, (new Point(center.X + r, center.Y)));
+            DrawCircle(g, (new Point(center.X - r, center.Y)));
         }
     }
 }
