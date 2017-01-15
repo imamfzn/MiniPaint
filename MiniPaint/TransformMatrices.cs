@@ -14,6 +14,7 @@ namespace MiniPaint
         public TransformMatrices(Point center)
         {
             this.center = center;
+            this.center.Y = -center.Y;
         }
 
         public Double[,] GetTranslation(Double dx, Double dy)
@@ -28,8 +29,8 @@ namespace MiniPaint
 
         public Double[,] GetRotation(Double alpha)
         {
-            Double cx = center.X - center.Y * Math.Sin(alpha) - center.X * Math.Cos(alpha);
-            Double cy = -center.Y - center.X * Math.Sin(alpha) + center.Y * Math.Cos(alpha);
+            Double cx = center.X + center.Y * Math.Sin(alpha) - center.X * Math.Cos(alpha);
+            Double cy = center.Y - center.X * Math.Sin(alpha) - center.Y * Math.Cos(alpha);
             return new Double[,]
             {
                 {Math.Cos(alpha),-Math.Sin(alpha),cx},
@@ -45,7 +46,7 @@ namespace MiniPaint
             Double[,] Mt1 = new Double[,]
             {
                 {1,0,-center.X},
-                {0,1,center.Y},
+                {0,1,-center.Y},
                 {0,0,1},
             };
 
@@ -55,7 +56,7 @@ namespace MiniPaint
             Double[,] Mt2 = new Double[,]
             {
                 {1,0,center.X},
-                {0,1,-center.Y},
+                {0,1,center.Y},
                 {0,0,1},
             };
 
@@ -94,7 +95,7 @@ namespace MiniPaint
            return new Double[,]
            {
                 {k,0,center.X*(1-k)},
-                {0,k,-center.Y*(1-k)},
+                {0,k,center.Y*(1-k)},
                 {0,0,1}
            };
         }
