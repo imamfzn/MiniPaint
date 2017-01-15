@@ -41,7 +41,8 @@ namespace MiniPaint
         private IDraw objectDraw;
         private TransformMatrices tm;
         public TransformOption opt { get; set; }
-        private FloodFill fill;
+        private FloodFill flood;
+        private BoundaryFill bound;
         private Dictionary<string, Color> colorPallet;
 
         public Form1()
@@ -60,7 +61,9 @@ namespace MiniPaint
 
             //for coloring
             Color defaultOldColor = drawingArea.GetPixel(0, 0);
-            fill = new FloodFill(Color.Black, defaultOldColor);
+            flood = new FloodFill(Color.Black, defaultOldColor);
+            Color boundary = Color.FromArgb( new Pen(Brushes.Black).Color.ToArgb());
+            bound = new BoundaryFill(boundary, Color.Blue); 
             MakeColorPallet();
             
         }
@@ -86,10 +89,26 @@ namespace MiniPaint
         private void pnlDrawingArea_MouseDown(object sender, MouseEventArgs e)
         {
             start = e.Location;
+            IFill fill = null;
             if (rbFill.Checked)
             {
-                Color old = drawingArea.GetPixel(start.X, start.Y);
-                fill.SetOldColor(old);
+                if (rbFloodFill.Checked)
+                {
+                    Color old = drawingArea.GetPixel(start.X, start.Y);
+                    flood.SetOldColor(old);
+                    fill = flood;
+                   
+                }
+
+                else
+                {
+                    Color old = drawingArea.GetPixel(start.X, start.Y);
+                    //MessageBox.Show(Color.Equals(old, Color.FromArgb(Color.Red.ToArgb())).ToString());
+                    fill = bound;
+                    Color boundary = Color.FromArgb(new Pen(Brushes.Black).Color.ToArgb());
+                    //MessageBox.Show(Color.Equals(old, boundary).ToString());
+                }
+
                 using (Graphics g = Graphics.FromImage(drawingArea))
                 {
                     fill.Fill(drawingArea, start.X, start.Y);
@@ -326,7 +345,9 @@ namespace MiniPaint
             if (rb.Checked)
             {
                 String key = rb.Name;
-                fill.SetFillColor(colorPallet[key]);
+                flood.SetFillColor(colorPallet[key]);
+                Color b = Color.FromArgb(colorPallet[key].ToArgb());
+                bound.SetFillColor(b);
             }
         }
 
@@ -339,7 +360,6 @@ namespace MiniPaint
                 {
                     grid.Draw(g);
                 }
-
                 drawingArea.Dispose();
                 drawingArea = gridArea;
             }

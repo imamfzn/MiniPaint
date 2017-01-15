@@ -9,7 +9,7 @@ namespace MiniPaint
 {
     interface IFill
     {
-        void Fill(Bitmap canvas);
+        void Fill(Bitmap canvas, int x, int y);
         void SetFillColor(Color fillColor);
     }
 }

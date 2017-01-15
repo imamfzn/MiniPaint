@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="Canvas\Cartesian.cs" />
     <Compile Include="Canvas\Grid.cs" />
+    <Compile Include="Coloring\BoundaryFill.cs" />
     <Compile Include="Coloring\FloodFill.cs" />
     <Compile Include="frmTransformationSetting.cs">
       <SubType>Form</SubType>
