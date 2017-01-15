@@ -178,9 +178,10 @@ namespace MiniPaint
             grid.SetGrid(gridSize, panel.Width, panel.Height);
             gridArea.Dispose();
             gridArea = new Bitmap(panel.Width, panel.Height);
-            
+
             //change origin transformation
-            tm.center = grid.GetOrigin;
+            tm = new TransformMatrices(grid.GetOrigin);
+            //MessageBox.Show(tm.center.ToString());
 
             //draw grid
             using (Graphics g = Graphics.FromImage(gridArea))
@@ -238,24 +239,23 @@ namespace MiniPaint
                         }
                         else //.. y = mx + c
                         {
-                            Double y = 1; int x;
-                            for (x = grid.GetOrigin.X; x < pnlDrawingArea.Width && y > 0; x++)
+                            Double y = -1; int x;
+                            for (x = grid.GetOrigin.X; x < pnlDrawingArea.Width && y<0; x++)
                             {
-                                y = opt.m * x + opt.c;
+                                y = opt.m * (x-tm.center.X) + opt.c + tm.center.Y;
                             }
-                            pMax = new Point(x, (int)y);
-                            y = opt.m * grid.GetOrigin.X + opt.c;
-                            for (x = grid.GetOrigin.X - 1; x >= 0 && y < pnlDrawingArea.Height; x--)
+                            pMax = new Point(x, (int)-y);
+                            y = opt.m * (grid.GetOrigin.X - 1- tm.center.X) + opt.c + tm.center.Y;
+                            for (x = grid.GetOrigin.X - 1; x >= 0 && y > -pnlDrawingArea.Height; x--)
                             {
-                                y = opt.m * x + opt.c;
+                                y = opt.m * (x - tm.center.X) + opt.c + tm.center.Y;
                             }
-                            pMin = new Point(x, (int)y);
+                            pMin = new Point(x, (int)-y);
                         }
 
                         using (Graphics g = Graphics.FromImage(drawingArea))
                         {
                             g.DrawLine(new Pen(Color.Black), pMax,pMin);
-                            Console.WriteLine(pMax.ToString() + " " + pMin.ToString());
                         }
 
                         //transform
