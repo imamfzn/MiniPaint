@@ -19,7 +19,9 @@ namespace MiniPaint.Shape
             this.rY = rY;
         }
 
-        //bugs before : pada ukuran dengan besar tertentu bentukelips akan menjadi aneh, dikarenakan tipe data untuk menyimpan nilai P tidak cukup dengan menggunakan int 32 bits
+        /*  bugs before : pada ukuran dengan besar tertentu bentukelips akan menjadi aneh, 
+            dikarenakan tipe data untuk menyimpan nilai P tidak cukup dengan menggunakan int 32 bits
+        */
         public void Draw(Graphics g)
         {
             long  Rx2 = rX * rX;
@@ -69,6 +71,10 @@ namespace MiniPaint.Shape
                 DrawElips(g, (new Point(center.X + x, center.Y - y)));
                 DrawElips(g, (new Point(center.X - x, center.Y - y)));
             }
+
+            //add loss pixel
+            DrawElips(g, (new Point(center.X, center.Y - rY)));
+            DrawElips(g, (new Point(center.X, center.Y + rY)));
         }
 
         public void DrawElips(Graphics g, Point P)
