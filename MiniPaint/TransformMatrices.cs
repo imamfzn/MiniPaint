@@ -42,7 +42,6 @@ namespace MiniPaint
         public Double[,] GetReflection(Double m,Double c)
         {
             Double div = m * m + 1;
-
             Double[,] Mt1 = new Double[,]
             {
                 {1,0,-center.X},
@@ -66,17 +65,6 @@ namespace MiniPaint
                 {2*m/div,(m*m-1)/div,2*c/div  },
                 {0,0,1 }
             };
-
-            Console.WriteLine("M refleksi");
-            for (int i = 0; i < Mt1.GetLength(0); i++)
-            {
-                for (int j = 0; j < Mt1.GetLength(0); j++)
-                {
-                    Console.Write("{0} ", Mt1[i, j]);
-                }
-                Console.WriteLine();
-            }
-
             return MatrixOperation.Multiply(MatrixOperation.Multiply(Mt2, Mr), Mt1);
         }
 

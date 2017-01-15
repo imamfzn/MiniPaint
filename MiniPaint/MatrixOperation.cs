@@ -12,7 +12,6 @@ namespace MiniPaint
         public static Double[,] Multiply(Double[,] M1, Double[,] M2)
         {
             Double[,] Result = new Double[,] { {0,0,0 }, {0,0,0 }, {0,0,0 } };
-            Console.WriteLine("Operation: ");
             for (int i = 0; i < M1.GetLength(0); i++)
             {
                 for (int j = 0; j < M2.GetLength(0); j++)
@@ -45,7 +44,6 @@ namespace MiniPaint
             {
                 for (int j = 0; j<Mp.Length;j++)
                 {
-                   
                     Res[j] = 0;
                     for (int k = 0; k < Mp.Length; k++)
                     {
@@ -53,10 +51,7 @@ namespace MiniPaint
                     }
                   
                 }
-            }
-
-            Console.WriteLine(P.ToString() + " >> " + new Point((int)Res[0], (int)Res[1]).ToString());
-            
+            }            
             return new Point((int)Res[0], -(int)Res[1]);
         }
 
