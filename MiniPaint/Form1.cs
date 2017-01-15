@@ -56,6 +56,32 @@ namespace MiniPaint
             //default transformation option
             opt = new TransformOption(200, 0, 2, -Math.PI / 4, 0, 3);
             MessageBox.Show(grid.GetOrigin.ToString());
+
+
+            //debug multiply matrix
+            Double[,] M1 = new Double[,]
+            {
+                {2,1,0},
+                {1,3,2},
+                {4,5,6},
+            };
+
+            Double[,] M2 = new Double[,]
+            {
+                {0,2,1},
+                {1,0,2},
+                {0,1,2},
+            };
+
+            Double[,] Result = MatrixOperation.Multiply(M1, M2);
+            for (int i = 0;i<Result.GetLength(0);i++)
+            {
+                for (int j = 0; j<Result.GetLength(0);j++)
+                {
+                    Console.Write("{0} ", Result[i, j]);
+                }
+                Console.WriteLine();
+            }
         }
 
         private void pnlDrawingArea_Paint(object sender, PaintEventArgs e)

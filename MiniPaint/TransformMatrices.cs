@@ -20,21 +20,21 @@ namespace MiniPaint
         {
             return new Double[,]
             {
-                {1,0,0},
-                {0,1,0},
-                {dx,dy,1}
+                {1,0,dx},
+                {0,1,dy},
+                {0,0,1}
             };
         }
 
         public Double[,] GetRotation(Double alpha)
         {
-            Double cx = center.X + center.Y * Math.Sin(alpha) - center.X * Math.Cos(alpha);
-            Double cy = center.Y - center.X * Math.Sin(alpha) - center.Y * Math.Cos(alpha);
+            Double cx = center.X - center.Y * Math.Sin(alpha) - center.X * Math.Cos(alpha);
+            Double cy = -center.Y - center.X * Math.Sin(alpha) + center.Y * Math.Cos(alpha);
             return new Double[,]
             {
-                {Math.Cos(alpha),Math.Sin(alpha),0},
-                {-Math.Sin(alpha), Math.Cos(alpha),0},
-                {cx,cy,1 }
+                {Math.Cos(alpha),-Math.Sin(alpha),cx},
+                {Math.Sin(alpha), Math.Cos(alpha),cy},
+                {0,0,1 }
             };
         }
 
@@ -42,12 +42,41 @@ namespace MiniPaint
         {
             Double div = m * m + 1;
 
-            return new Double[,]
+            Double[,] Mt1 = new Double[,]
             {
-                {(1-m*m)/div,-2*m/div,0},
-                {-2*m/div,(m*m-1)/div,0},
-                {-2*(center.X+c)*m/div, 2*(center.Y-c)/div ,1}
+                {1,0,-center.X},
+                {0,1,center.Y},
+                {0,0,1},
             };
+
+            Console.WriteLine(c);
+            Console.WriteLine(center.Y);
+
+            Double[,] Mt2 = new Double[,]
+            {
+                {1,0,center.X},
+                {0,1,-center.Y},
+                {0,0,1},
+            };
+
+            Double[,] Mr = new Double[,]
+            {
+                {(1-m*m)/div, 2*m/div,-2*c*m/div },
+                {2*m/div,(m*m-1)/div,2*c/div  },
+                {0,0,1 }
+            };
+
+            Console.WriteLine("M refleksi");
+            for (int i = 0; i < Mt1.GetLength(0); i++)
+            {
+                for (int j = 0; j < Mt1.GetLength(0); j++)
+                {
+                    Console.Write("{0} ", Mt1[i, j]);
+                }
+                Console.WriteLine();
+            }
+
+            return MatrixOperation.Multiply(MatrixOperation.Multiply(Mt2, Mr), Mt1);
         }
 
         public Double[,] GetReflection(Double c)

@@ -25,7 +25,7 @@ namespace MiniPaint
                 dy = Convert.ToInt32(numDy.Value);
 
             Double k = Convert.ToDouble(numKFactor.Value), 
-                alpha = - Convert.ToDouble(numAlpha.Value) * Math.PI / 180,
+                alpha = Convert.ToDouble(numAlpha.Value) * Math.PI / 180,
                 m = Convert.ToDouble(numGrad.Value), 
                 c = Convert.ToDouble(numConst.Value);
             
