@@ -93,9 +93,9 @@ namespace MiniPaint
         {
            return new Double[,]
            {
-                {k,0,0},
-                {0,k,0},
-                {center.X*(1-k),center.Y*(1-k),1}
+                {k,0,center.X*(1-k)},
+                {0,k,-center.Y*(1-k)},
+                {0,0,1}
            };
         }
 
