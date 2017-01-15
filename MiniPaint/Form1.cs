@@ -89,6 +89,7 @@ namespace MiniPaint
             if (rbFill.Checked)
             {
                 Color old = drawingArea.GetPixel(start.X, start.Y);
+                fill.SetOldColor(old);
                 using (Graphics g = Graphics.FromImage(drawingArea))
                 {
                     fill.Fill(drawingArea, start.X, start.Y);
@@ -325,7 +326,7 @@ namespace MiniPaint
             if (rb.Checked)
             {
                 String key = rb.Name;
-                
+                fill.SetFillColor(colorPallet[key]);
             }
         }
 

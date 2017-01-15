@@ -24,6 +24,16 @@ namespace MiniPaint.Coloring
             this.fillColor = fillColor;
         }
 
+        public void SetFillColor(Color fillColor)
+        {
+            this.fillColor = fillColor;
+        }
+
+        public void SetOldColor(Color old)
+        {
+            this.oldColor = old;
+        }
+
         public void Fill(Bitmap canvas)
         {
 
@@ -37,9 +47,9 @@ namespace MiniPaint.Coloring
             while (pixels.Count > 0)
             {
                 Point p = pixels.Pop();
-                Color pColor = canvas.GetPixel(p.X, p.Y);
                 if (p.X > 0 && p.X < canvas.Width && p.Y > 0 && p.Y < canvas.Height)
                 {
+                    Color pColor = canvas.GetPixel(p.X, p.Y);
                     if (pColor == oldColor)
                     {
                         //Console.WriteLine("{0},{1}", p.X, p.Y);
@@ -50,7 +60,6 @@ namespace MiniPaint.Coloring
                         pixels.Push(new Point(p.X, p.Y + 1));
                     }
                 }
-
             }
         }
     }
