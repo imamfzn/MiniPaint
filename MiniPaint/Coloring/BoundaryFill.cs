@@ -32,7 +32,6 @@ namespace MiniPaint.Coloring
         {
             Stack<Point> pixels = new Stack<Point>();
             pixels.Push(new Point(x, y));
-            int count = 0;
             while (pixels.Count > 0)
             {
                 Point p = pixels.Pop();
