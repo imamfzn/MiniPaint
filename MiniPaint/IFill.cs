@@ -9,6 +9,6 @@ namespace MiniPaint
 {
     interface IFill
     {
-        void Fill(Graphics g);
+        void Fill(Bitmap canvas);
     }
 }

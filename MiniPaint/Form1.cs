@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using MiniPaint.Shape;
 using MiniPaint.Canvas;
 using MiniPaint.LineCreator;
+using MiniPaint.Coloring;
 
 
 namespace MiniPaint
@@ -41,11 +42,13 @@ namespace MiniPaint
         private TransformMatrices tm;
         public TransformOption opt { get; set; }
         public string opts {get;set;}
+        private bool isColoring;
 
         public Form1()
         {
             InitializeComponent();
             dragging = false;
+            isColoring = false;
             start = new Point(0, 0);
             drawingArea = new Bitmap(pnlDrawingArea.Width,pnlDrawingArea.Height);
             gridArea = new Bitmap(pnlDrawingArea.Width, pnlDrawingArea.Height);
@@ -64,9 +67,27 @@ namespace MiniPaint
 
         private void pnlDrawingArea_MouseDown(object sender, MouseEventArgs e)
         {
-            dragging = true;
             start = e.Location;
-            lastDrawing = (Bitmap) drawingArea.Clone(); //save last object on drawing area
+            if (ckFill.Checked)
+            {
+                isColoring = true;
+                Color old = drawingArea.GetPixel(start.X, start.Y);
+                FloodFill f = new FloodFill(Color.Red, old, Color.Black);
+                using (Graphics g = Graphics.FromImage(drawingArea))
+                {
+                    flood(g, drawingArea, old, start.X, start.Y);
+                }
+
+                pnlDrawingArea.Invalidate();
+            }
+            else
+            {
+                 dragging = true;
+                 lastDrawing = (Bitmap) drawingArea.Clone(); //save last object on drawing area
+            }
+          
+            
+           
         }
 
         private void pnlDrawingArea_MouseMove(object sender, MouseEventArgs e)
@@ -312,6 +333,32 @@ namespace MiniPaint
         private Point GetCenter(Point A, Point B)
         {
             return new Point((int)(A.X + B.X) / 2, (int)(A.Y + B.Y) / 2);
+        }
+
+        private void flood(Graphics g,Bitmap canvas, Color old, int x, int y )
+        {
+            Stack<Point> pixels = new Stack<Point>();
+            pixels.Push(new Point(x, y));
+
+            while(pixels.Count > 0)
+            {
+                Point p = pixels.Pop();
+                Color pColor = canvas.GetPixel(p.X, p.Y);
+                if (p.X > 0 && p.X < canvas.Width && p.Y > 0 && p.Y < canvas.Height)
+                {
+                    if (pColor == old)
+                    {
+                        //Console.WriteLine("{0},{1}", p.X, p.Y);
+                        canvas.SetPixel(p.X, p.Y, Color.Blue);
+                        //g.FillRectangle(Brushes.Red, p.X, p.Y, 1, 1);
+                        pixels.Push(new Point(p.X - 1, p.Y));
+                        pixels.Push(new Point(p.X, p.Y - 1));
+                        pixels.Push(new Point(p.X + 1, p.Y));
+                        pixels.Push(new Point(p.X, p.Y + 1));
+                    }
+                }
+                
+            }
         }
     }
 }

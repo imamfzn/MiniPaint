@@ -49,12 +49,14 @@
   <ItemGroup>
     <Compile Include="Canvas\Cartesian.cs" />
     <Compile Include="Canvas\Grid.cs" />
+    <Compile Include="Coloring\FloodFill.cs" />
     <Compile Include="frmTransformationSetting.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmTransformationSetting.Designer.cs">
       <DependentUpon>frmTransformationSetting.cs</DependentUpon>
     </Compile>
+    <Compile Include="IFill.cs" />
     <Compile Include="ITransformation.cs" />
     <Compile Include="LineCreator\Bresenham.cs" />
     <Compile Include="LineCreator\DDA.cs" />

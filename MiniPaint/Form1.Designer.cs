@@ -52,6 +52,7 @@
             this.rbTranslation = new System.Windows.Forms.RadioButton();
             this.rbDilatation = new System.Windows.Forms.RadioButton();
             this.rbRotation = new System.Windows.Forms.RadioButton();
+            this.ckFill = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pnlDrawingArea)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -103,6 +104,7 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.Transparent;
+            this.tabPage1.Controls.Add(this.ckFill);
             this.tabPage1.Controls.Add(this.grbNGon);
             this.tabPage1.Controls.Add(this.grbShape);
             this.tabPage1.Controls.Add(this.grbLine);
@@ -349,6 +351,16 @@
             this.rbRotation.Text = "Rotation";
             this.rbRotation.UseVisualStyleBackColor = true;
             // 
+            // ckFill
+            // 
+            this.ckFill.AutoSize = true;
+            this.ckFill.Location = new System.Drawing.Point(701, 25);
+            this.ckFill.Name = "ckFill";
+            this.ckFill.Size = new System.Drawing.Size(38, 17);
+            this.ckFill.TabIndex = 6;
+            this.ckFill.Text = "Fill";
+            this.ckFill.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -362,6 +374,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pnlDrawingArea)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             this.grbNGon.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numericGon)).EndInit();
             this.grbShape.ResumeLayout(false);
@@ -399,6 +412,7 @@
         private System.Windows.Forms.RadioButton rbTranslation;
         private System.Windows.Forms.RadioButton rbDilatation;
         private System.Windows.Forms.RadioButton rbRotation;
+        private System.Windows.Forms.CheckBox ckFill;
     }
 }
 
