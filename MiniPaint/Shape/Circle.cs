@@ -20,12 +20,7 @@ namespace MiniPaint.Shape
 
         public void Draw(Graphics g)
         {
-            //int r = GetDistance(Start, End);
             int x = 0, y = r, p = 1 - r;
-            DrawCircle(g, (new Point(center.X, center.Y + r)));
-            DrawCircle(g, (new Point(center.X, center.Y - r)));
-            DrawCircle(g, (new Point(center.X+r, center.Y)));
-            DrawCircle(g, (new Point(center.X-r, center.Y)));
             while (x <= y)
             {
                 x++;
@@ -48,6 +43,17 @@ namespace MiniPaint.Shape
                 DrawCircle(g, (new Point(center.X + y, center.Y - x)));
                 DrawCircle(g, (new Point(center.X - y, center.Y - x)));
             }
+
+            /*.. 15 Januari 2017, 22:31
+              .. pada bagian atas, kanan, bawah, kiri sejauh r dari titik pusat lingkaran pixel tidak terisi, 
+              .. sehingga saat melakaukan filling pada lingkaran kan loss
+              .. sementara saya tambahkan beberapa baris untuk menambah pixel yang bolong
+            */
+            //add loss pixel
+            DrawCircle(g, (new Point(center.X, center.Y + r)));
+            DrawCircle(g, (new Point(center.X, center.Y - r)));
+            DrawCircle(g, (new Point(center.X + r, center.Y)));
+            DrawCircle(g, (new Point(center.X - r, center.Y)));
         }
 
         private void DrawCircle(Graphics g, Point P)
