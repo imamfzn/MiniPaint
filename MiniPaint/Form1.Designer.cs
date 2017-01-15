@@ -35,6 +35,7 @@
             this.grbNGon = new System.Windows.Forms.GroupBox();
             this.numericGon = new System.Windows.Forms.NumericUpDown();
             this.grbShape = new System.Windows.Forms.GroupBox();
+            this.rbFill = new System.Windows.Forms.RadioButton();
             this.rbStar = new System.Windows.Forms.RadioButton();
             this.rbPolygon = new System.Windows.Forms.RadioButton();
             this.rbElips = new System.Windows.Forms.RadioButton();
@@ -52,7 +53,19 @@
             this.rbTranslation = new System.Windows.Forms.RadioButton();
             this.rbDilatation = new System.Windows.Forms.RadioButton();
             this.rbRotation = new System.Windows.Forms.RadioButton();
-            this.ckFill = new System.Windows.Forms.CheckBox();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.rbBoundaryFill = new System.Windows.Forms.RadioButton();
+            this.rbFloodFill = new System.Windows.Forms.RadioButton();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rbColorPurple = new System.Windows.Forms.RadioButton();
+            this.rbColorWhite = new System.Windows.Forms.RadioButton();
+            this.rbColorGray = new System.Windows.Forms.RadioButton();
+            this.rbColorGreen = new System.Windows.Forms.RadioButton();
+            this.rbColorBlue = new System.Windows.Forms.RadioButton();
+            this.rbColorYellow = new System.Windows.Forms.RadioButton();
+            this.rbColorRed = new System.Windows.Forms.RadioButton();
+            this.rbColorBlack = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.pnlDrawingArea)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -61,6 +74,9 @@
             this.grbShape.SuspendLayout();
             this.grbLine.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlDrawingArea
@@ -95,6 +111,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -104,7 +121,6 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.Transparent;
-            this.tabPage1.Controls.Add(this.ckFill);
             this.tabPage1.Controls.Add(this.grbNGon);
             this.tabPage1.Controls.Add(this.grbShape);
             this.tabPage1.Controls.Add(this.grbLine);
@@ -118,7 +134,7 @@
             // grbNGon
             // 
             this.grbNGon.Controls.Add(this.numericGon);
-            this.grbNGon.Location = new System.Drawing.Point(516, 6);
+            this.grbNGon.Location = new System.Drawing.Point(586, 6);
             this.grbNGon.Name = "grbNGon";
             this.grbNGon.Size = new System.Drawing.Size(158, 50);
             this.grbNGon.TabIndex = 3;
@@ -144,6 +160,7 @@
             // 
             // grbShape
             // 
+            this.grbShape.Controls.Add(this.rbFill);
             this.grbShape.Controls.Add(this.rbStar);
             this.grbShape.Controls.Add(this.rbPolygon);
             this.grbShape.Controls.Add(this.rbElips);
@@ -151,10 +168,21 @@
             this.grbShape.Controls.Add(this.rbLine);
             this.grbShape.Location = new System.Drawing.Point(6, 6);
             this.grbShape.Name = "grbShape";
-            this.grbShape.Size = new System.Drawing.Size(297, 50);
+            this.grbShape.Size = new System.Drawing.Size(351, 50);
             this.grbShape.TabIndex = 5;
             this.grbShape.TabStop = false;
             this.grbShape.Text = "Shapes";
+            // 
+            // rbFill
+            // 
+            this.rbFill.AutoSize = true;
+            this.rbFill.Location = new System.Drawing.Point(293, 19);
+            this.rbFill.Name = "rbFill";
+            this.rbFill.Size = new System.Drawing.Size(37, 17);
+            this.rbFill.TabIndex = 5;
+            this.rbFill.TabStop = true;
+            this.rbFill.Text = "Fill";
+            this.rbFill.UseVisualStyleBackColor = true;
             // 
             // rbStar
             // 
@@ -217,7 +245,7 @@
             this.grbLine.Controls.Add(this.rbLineBresenham);
             this.grbLine.Controls.Add(this.rbLineDDA);
             this.grbLine.Controls.Add(this.rbLineNaive);
-            this.grbLine.Location = new System.Drawing.Point(309, 6);
+            this.grbLine.Location = new System.Drawing.Point(379, 6);
             this.grbLine.Name = "grbLine";
             this.grbLine.Size = new System.Drawing.Size(201, 50);
             this.grbLine.TabIndex = 4;
@@ -351,15 +379,156 @@
             this.rbRotation.Text = "Rotation";
             this.rbRotation.UseVisualStyleBackColor = true;
             // 
-            // ckFill
+            // tabPage3
             // 
-            this.ckFill.AutoSize = true;
-            this.ckFill.Location = new System.Drawing.Point(701, 25);
-            this.ckFill.Name = "ckFill";
-            this.ckFill.Size = new System.Drawing.Size(38, 17);
-            this.ckFill.TabIndex = 6;
-            this.ckFill.Text = "Fill";
-            this.ckFill.UseVisualStyleBackColor = true;
+            this.tabPage3.BackColor = System.Drawing.Color.Transparent;
+            this.tabPage3.Controls.Add(this.groupBox2);
+            this.tabPage3.Controls.Add(this.groupBox1);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(922, 66);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Coloring";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.rbBoundaryFill);
+            this.groupBox2.Controls.Add(this.rbFloodFill);
+            this.groupBox2.Location = new System.Drawing.Point(363, 3);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(200, 59);
+            this.groupBox2.TabIndex = 9;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Method";
+            // 
+            // rbBoundaryFill
+            // 
+            this.rbBoundaryFill.AutoSize = true;
+            this.rbBoundaryFill.Location = new System.Drawing.Point(6, 36);
+            this.rbBoundaryFill.Name = "rbBoundaryFill";
+            this.rbBoundaryFill.Size = new System.Drawing.Size(85, 17);
+            this.rbBoundaryFill.TabIndex = 9;
+            this.rbBoundaryFill.Text = "Boundary Fill";
+            this.rbBoundaryFill.UseVisualStyleBackColor = true;
+            // 
+            // rbFloodFill
+            // 
+            this.rbFloodFill.AutoSize = true;
+            this.rbFloodFill.Checked = true;
+            this.rbFloodFill.Location = new System.Drawing.Point(6, 18);
+            this.rbFloodFill.Name = "rbFloodFill";
+            this.rbFloodFill.Size = new System.Drawing.Size(66, 17);
+            this.rbFloodFill.TabIndex = 8;
+            this.rbFloodFill.TabStop = true;
+            this.rbFloodFill.Text = "Flood Fill";
+            this.rbFloodFill.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.rbColorPurple);
+            this.groupBox1.Controls.Add(this.rbColorWhite);
+            this.groupBox1.Controls.Add(this.rbColorGray);
+            this.groupBox1.Controls.Add(this.rbColorGreen);
+            this.groupBox1.Controls.Add(this.rbColorBlue);
+            this.groupBox1.Controls.Add(this.rbColorYellow);
+            this.groupBox1.Controls.Add(this.rbColorRed);
+            this.groupBox1.Controls.Add(this.rbColorBlack);
+            this.groupBox1.Location = new System.Drawing.Point(7, 2);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(350, 60);
+            this.groupBox1.TabIndex = 8;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Color";
+            // 
+            // rbColorPurple
+            // 
+            this.rbColorPurple.AutoSize = true;
+            this.rbColorPurple.Location = new System.Drawing.Point(131, 37);
+            this.rbColorPurple.Name = "rbColorPurple";
+            this.rbColorPurple.Size = new System.Drawing.Size(55, 17);
+            this.rbColorPurple.TabIndex = 7;
+            this.rbColorPurple.Text = "Purple";
+            this.rbColorPurple.UseVisualStyleBackColor = true;
+            this.rbColorPurple.CheckedChanged += new System.EventHandler(this.rbColor_CheckedChanged);
+            // 
+            // rbColorWhite
+            // 
+            this.rbColorWhite.AutoSize = true;
+            this.rbColorWhite.Location = new System.Drawing.Point(73, 37);
+            this.rbColorWhite.Name = "rbColorWhite";
+            this.rbColorWhite.Size = new System.Drawing.Size(53, 17);
+            this.rbColorWhite.TabIndex = 6;
+            this.rbColorWhite.Text = "White";
+            this.rbColorWhite.UseVisualStyleBackColor = true;
+            this.rbColorWhite.CheckedChanged += new System.EventHandler(this.rbColor_CheckedChanged);
+            // 
+            // rbColorGray
+            // 
+            this.rbColorGray.AutoSize = true;
+            this.rbColorGray.Checked = true;
+            this.rbColorGray.Location = new System.Drawing.Point(15, 37);
+            this.rbColorGray.Name = "rbColorGray";
+            this.rbColorGray.Size = new System.Drawing.Size(47, 17);
+            this.rbColorGray.TabIndex = 5;
+            this.rbColorGray.TabStop = true;
+            this.rbColorGray.Text = "Gray";
+            this.rbColorGray.UseVisualStyleBackColor = true;
+            this.rbColorGray.CheckedChanged += new System.EventHandler(this.rbColor_CheckedChanged);
+            // 
+            // rbColorGreen
+            // 
+            this.rbColorGreen.AutoSize = true;
+            this.rbColorGreen.Location = new System.Drawing.Point(247, 19);
+            this.rbColorGreen.Name = "rbColorGreen";
+            this.rbColorGreen.Size = new System.Drawing.Size(54, 17);
+            this.rbColorGreen.TabIndex = 4;
+            this.rbColorGreen.Text = "Green";
+            this.rbColorGreen.UseVisualStyleBackColor = true;
+            this.rbColorGreen.CheckedChanged += new System.EventHandler(this.rbColor_CheckedChanged);
+            // 
+            // rbColorBlue
+            // 
+            this.rbColorBlue.AutoSize = true;
+            this.rbColorBlue.Location = new System.Drawing.Point(189, 19);
+            this.rbColorBlue.Name = "rbColorBlue";
+            this.rbColorBlue.Size = new System.Drawing.Size(46, 17);
+            this.rbColorBlue.TabIndex = 3;
+            this.rbColorBlue.Text = "Blue";
+            this.rbColorBlue.UseVisualStyleBackColor = true;
+            this.rbColorBlue.CheckedChanged += new System.EventHandler(this.rbColor_CheckedChanged);
+            // 
+            // rbColorYellow
+            // 
+            this.rbColorYellow.AutoSize = true;
+            this.rbColorYellow.Location = new System.Drawing.Point(131, 19);
+            this.rbColorYellow.Name = "rbColorYellow";
+            this.rbColorYellow.Size = new System.Drawing.Size(56, 17);
+            this.rbColorYellow.TabIndex = 2;
+            this.rbColorYellow.Text = "Yellow";
+            this.rbColorYellow.UseVisualStyleBackColor = true;
+            this.rbColorYellow.CheckedChanged += new System.EventHandler(this.rbColor_CheckedChanged);
+            // 
+            // rbColorRed
+            // 
+            this.rbColorRed.AutoSize = true;
+            this.rbColorRed.Location = new System.Drawing.Point(73, 19);
+            this.rbColorRed.Name = "rbColorRed";
+            this.rbColorRed.Size = new System.Drawing.Size(45, 17);
+            this.rbColorRed.TabIndex = 1;
+            this.rbColorRed.Text = "Red";
+            this.rbColorRed.UseVisualStyleBackColor = true;
+            this.rbColorRed.CheckedChanged += new System.EventHandler(this.rbColor_CheckedChanged);
+            // 
+            // rbColorBlack
+            // 
+            this.rbColorBlack.AutoSize = true;
+            this.rbColorBlack.Location = new System.Drawing.Point(15, 19);
+            this.rbColorBlack.Name = "rbColorBlack";
+            this.rbColorBlack.Size = new System.Drawing.Size(52, 17);
+            this.rbColorBlack.TabIndex = 0;
+            this.rbColorBlack.Text = "Black";
+            this.rbColorBlack.UseVisualStyleBackColor = true;
+            this.rbColorBlack.CheckedChanged += new System.EventHandler(this.rbColor_CheckedChanged);
             // 
             // Form1
             // 
@@ -374,7 +543,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pnlDrawingArea)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
             this.grbNGon.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numericGon)).EndInit();
             this.grbShape.ResumeLayout(false);
@@ -383,6 +551,11 @@
             this.grbLine.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -412,7 +585,20 @@
         private System.Windows.Forms.RadioButton rbTranslation;
         private System.Windows.Forms.RadioButton rbDilatation;
         private System.Windows.Forms.RadioButton rbRotation;
-        private System.Windows.Forms.CheckBox ckFill;
+        private System.Windows.Forms.RadioButton rbFill;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.RadioButton rbBoundaryFill;
+        private System.Windows.Forms.RadioButton rbFloodFill;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RadioButton rbColorPurple;
+        private System.Windows.Forms.RadioButton rbColorWhite;
+        private System.Windows.Forms.RadioButton rbColorGray;
+        private System.Windows.Forms.RadioButton rbColorGreen;
+        private System.Windows.Forms.RadioButton rbColorBlue;
+        private System.Windows.Forms.RadioButton rbColorYellow;
+        private System.Windows.Forms.RadioButton rbColorRed;
+        private System.Windows.Forms.RadioButton rbColorBlack;
     }
 }
 
