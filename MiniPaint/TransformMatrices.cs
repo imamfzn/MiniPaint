@@ -49,9 +49,6 @@ namespace MiniPaint
                 {0,0,1},
             };
 
-            Console.WriteLine(c);
-            Console.WriteLine(center.Y);
-
             Double[,] Mt2 = new Double[,]
             {
                 {1,0,center.X},

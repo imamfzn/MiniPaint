@@ -55,33 +55,6 @@ namespace MiniPaint
 
             //default transformation option
             opt = new TransformOption(200, 0, 2, -Math.PI / 4, 0, 3);
-            MessageBox.Show(grid.GetOrigin.ToString());
-
-
-            //debug multiply matrix
-            Double[,] M1 = new Double[,]
-            {
-                {2,1,0},
-                {1,3,2},
-                {4,5,6},
-            };
-
-            Double[,] M2 = new Double[,]
-            {
-                {0,2,1},
-                {1,0,2},
-                {0,1,2},
-            };
-
-            Double[,] Result = MatrixOperation.Multiply(M1, M2);
-            for (int i = 0;i<Result.GetLength(0);i++)
-            {
-                for (int j = 0; j<Result.GetLength(0);j++)
-                {
-                    Console.Write("{0} ", Result[i, j]);
-                }
-                Console.WriteLine();
-            }
         }
 
         private void pnlDrawingArea_Paint(object sender, PaintEventArgs e)
@@ -244,15 +217,11 @@ namespace MiniPaint
                 {
                     if (Double.IsInfinity(opt.m))
                     {
-                        //plot garis y = mx + c
+                        //plot garis x = c
                         using (Graphics g = Graphics.FromImage(drawingArea))
                         {
                             g.DrawLine(new Pen(Color.Black),new Point(grid.GetOrigin.X + (int)opt.c, 0),
                                     new Point(grid.GetOrigin.X + (int)opt.c, pnlDrawingArea.Height));
-                           /* new DDA(
-                                new Line(
-                                    new Point(grid.GetOrigin.X+ (int)opt.c, 0), 
-                                    new Point(grid.GetOrigin.X +(int)opt.c, pnlDrawingArea.Height))).Draw(g);*/
                         }
 
                         //transform
@@ -260,14 +229,14 @@ namespace MiniPaint
                     }
                     else
                     {
-                        //plot garis y = mx + c
                         Point pMax, pMin;
+                        //..y = c
                         if (opt.m == 0)
                         {
                             pMin = new Point(0, grid.GetOrigin.Y -(int) opt.c);
                             pMax = new Point(pnlDrawingArea.Width, grid.GetOrigin.Y - (int)opt.c);
                         }
-                        else
+                        else //.. y = mx + c
                         {
                             Double y = 1; int x;
                             for (x = grid.GetOrigin.X; x < pnlDrawingArea.Width && y > 0; x++)
@@ -285,8 +254,8 @@ namespace MiniPaint
 
                         using (Graphics g = Graphics.FromImage(drawingArea))
                         {
-                            new DDA(new Line(pMax, pMin)).Draw(g);
                             g.DrawLine(new Pen(Color.Black), pMax,pMin);
+                            Console.WriteLine(pMax.ToString() + " " + pMin.ToString());
                         }
 
                         //transform

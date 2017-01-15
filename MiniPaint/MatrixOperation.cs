@@ -23,15 +23,6 @@ namespace MiniPaint
                 }
             }
 
-            for (int i = 0; i < Result.GetLength(0); i++)
-            {
-                for (int j = 0; j < Result.GetLength(0); j++)
-                {
-                    Console.Write("{0} ", Result[i, j]);
-                }
-                Console.WriteLine();
-            }
-
             return Result;
         }
 
