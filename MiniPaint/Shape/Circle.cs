@@ -22,7 +22,11 @@ namespace MiniPaint.Shape
         {
             //int r = GetDistance(Start, End);
             int x = 0, y = r, p = 1 - r;
-            while (x < y)
+            DrawCircle(g, (new Point(center.X, center.Y + r)));
+            DrawCircle(g, (new Point(center.X, center.Y - r)));
+            DrawCircle(g, (new Point(center.X+r, center.Y)));
+            DrawCircle(g, (new Point(center.X-r, center.Y)));
+            while (x <= y)
             {
                 x++;
                 if (p < 0)
